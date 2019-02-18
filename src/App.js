@@ -10,9 +10,6 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <header className="App-header">
-            <h1>Habit Tracker</h1>
-          </header>
           <div>
             <MainMenu />
             <Route exact path="/" component={HomePage} />
