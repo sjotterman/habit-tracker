@@ -6,7 +6,7 @@ class HomePage extends React.Component {
         return (
             <div>
                 <h1>Home Page</h1>
-                <p>Placeholder for homepage</p>
+                <p>This doesn't do anything yet. Click 'Track' above to test out the tracker!</p>
             </div>
         )
     }
