@@ -1,12 +1,21 @@
 export default function counterReducer(state = [], action) {
     switch(action.type) {
         case 'COUNTER_CLICKED':
-        const found = state.find( x => {
+            return clickCounter(state, action);
+
+        default:
+            return state;
+    }
+};
+
+
+ function clickCounter(counterState, action){
+        const found = counterState.find( x => {
            return x.name === action.counter.name;
         })
-        let newState;
+        let newCounters;
         if(found) {
-            newState = state.map( x => {
+            newCounters = counterState.map( x => {
                 if(x.name === action.counter.name) {
                     return {
                         name: x.name,
@@ -20,11 +29,8 @@ export default function counterReducer(state = [], action) {
                 name: action.counter.name,
                 clicks: 1
             }
-            newState = [...state, newItem];
+            newCounters = [...counterState, newItem];
         }
-            return newState;
 
-        default:
-            return state;
-    }
-};
+        return newCounters;
+}
