@@ -3,22 +3,19 @@ import { Link } from 'react-router-dom';
 
 const MainMenu = () => {
     return (
-
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav mr-auto">
-                <li className="nav-item active">
+        <div className="container" id="navbarSupportedContent">
+            <div className="row">
+                <div className="col-xs-4">
                     <Link to="/" className="nav-link">Home Page</Link>
-                </li>
-                <li className="nav-item active">
+                </div>
+                <div className="col-xs-4">
                     <Link to="/track" className="nav-link">Track</Link>
-                </li>
-                <li className="nav-item active">
+                </div>
+                <div className="col-xs-4">
                     <Link to="/about" className="nav-link">About Page</Link>
-                </li>
-            </ul>
+                </div>
+            </div>
         </div>
-    </nav>
     );
 
 }

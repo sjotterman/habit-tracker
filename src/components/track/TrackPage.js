@@ -34,7 +34,7 @@ class TrackPage extends React.Component {
 
     renderCounters(counters = []) {
     return  counters.map(item => {
-            return (<div id={item.name}>
+            return (<div id={item.name} key={item.name}>
                 {item.name}
             </div>)
         })
