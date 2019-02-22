@@ -5,6 +5,7 @@ import * as counterActions from '../../actions/counterActions';
 
 
 class TrackPage extends React.Component {
+
     constructor(props, context){
         super(props, context);
 
@@ -14,7 +15,7 @@ class TrackPage extends React.Component {
         };
     }
 
-    onCounterAClick = () => {
+    onCounterAClick = (counter) => {
         let counterA = {name: 'A'};
         this.props.dispatch(counterActions.counterIncrement(counterA))
         this.setState( (prevState) => {
@@ -33,15 +34,14 @@ class TrackPage extends React.Component {
     }
 
     renderCounters(counters = []) {
-    return  counters.map(item => {
+        return counters.map(item => {
             return (<div id={item.name} key={item.name}>
-                {item.name}
+                {item.name} : {item.clicks}
             </div>)
         })
     }
 
     render() {
-        console.log(this.state.counters);
         return (
             <div>
                 <h1>Track</h1>
