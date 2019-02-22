@@ -45,13 +45,21 @@ class TrackPage extends React.Component {
         return (
             <div>
                 <h1>Track</h1>
-                <ClickCounter 
-                 counter={this.state.clickCounterA} 
-                 onCounterClick={this.onCounterAClick} />
-                <ClickCounter 
-                 counter={this.state.clickCounterB} 
-                 onCounterClick={this.onCounterBClick} />
-                <h1>Counters: {this.renderCounters(this.props.counters)}</h1>
+                <div className="row">
+                <div className="col-sm-6 col-m-4">
+                    <ClickCounter
+                    counter={this.state.clickCounterA}
+                    onCounterClick={this.onCounterAClick} />
+                </div>
+                <div className="col-sm-6 col-m-4">
+                    <ClickCounter
+                    counter={this.state.clickCounterB}
+                    onCounterClick={this.onCounterBClick} />
+                </div>
+                <div className="col-sm-12 col-m-12">
+                    <h1>Counters: {this.renderCounters(this.props.counters)}</h1>
+                </div>
+                </div>
                  
             </div>
         )
