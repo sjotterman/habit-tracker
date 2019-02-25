@@ -17,7 +17,7 @@ class TrackPage extends React.Component {
 
     onCounterAClick = (counter) => {
         let counterA = {name: 'A'};
-        this.props.dispatch(counterActions.counterIncrement(counterA))
+        this.props.counterIncrement(counterA);
         this.setState( (prevState) => {
             return {clickCounterA: prevState.clickCounterA + 1}
         }
@@ -26,7 +26,7 @@ class TrackPage extends React.Component {
 
     onCounterBClick = () => {
         let counterB = {name: 'B'};
-        this.props.dispatch(counterActions.counterIncrement(counterB))
+        this.props.counterIncrement(counterB);
         this.setState( (prevState) => {
             return {clickCounterB: prevState.clickCounterB + 1}
         }
@@ -69,8 +69,14 @@ class TrackPage extends React.Component {
 function mapStateToProps(state, ownProps) {
     return {
         counters: state.counters
-    }
+    };
 }
 
+function mapDispatchToProps(dispatch) {
+    return {
+        counterIncrement: counter => dispatch(counterActions.counterIncrement(counter))
+        };
+    }
+
 //TODO: mapDispatchToProps
-export default connect(mapStateToProps)(TrackPage);
+export default connect(mapStateToProps, mapDispatchToProps)(TrackPage);
