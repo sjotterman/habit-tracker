@@ -1,6 +1,8 @@
+import * as types from '../actions/actionTypes';
+
 export default function counterReducer(state = [], action) {
     switch(action.type) {
-        case 'COUNTER_CLICKED':
+        case types.COUNTER_CLICKED:
             return clickCounter(state, action);
 
         default:
