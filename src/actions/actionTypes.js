@@ -1,1 +1,2 @@
 export const COUNTER_CLICKED = 'COUNTER_CLICKED';
+export const GOAL_CREATED = 'GOAL_CREATED';

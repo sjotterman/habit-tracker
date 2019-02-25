@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
 import counters from './counterReducer';
+import goals from './goalsReducer';
 
 const rootReducer = combineReducers({
-    counters
+    counters,
+    goals
 });
 
 export default rootReducer;

@@ -7,7 +7,23 @@ import {Provider} from 'react-redux';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-const store = configureStore();
+// Testing only
+// TODO: Replace with mock api call
+const initialState = {
+    goals: [
+            {
+                id: 'brush-my-teeth',
+                created: "2019-02-25",
+                name: 'Brush my teeth'
+            },
+            {
+                id: 'take-a-nap',
+                created: "2019-02-25",
+                name: 'Take a nap'
+            }
+        ]
+}
+const store = configureStore(initialState);
 
 ReactDOM.render(
     <Provider store={store}>

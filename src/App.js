@@ -5,6 +5,7 @@ import HomePage from './components/home/HomePage';
 import AboutPage from './components/about/AboutPage';
 import MainMenu from './components/shared/MainMenu';
 import TrackPage from './components/track/TrackPage';
+import GoalsPage from './components/goals/GoalsPage';
 
 class App extends Component {
   render() {
@@ -15,6 +16,7 @@ class App extends Component {
             <MainMenu />
             <Route exact path="/" component={HomePage} />
             <Route path="/about" component={AboutPage} />
+            <Route path="/goals" component={GoalsPage} />
             <Route path="/track" component={TrackPage} />
           </div>
         </div>
