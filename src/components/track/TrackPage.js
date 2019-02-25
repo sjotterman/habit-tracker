@@ -1,6 +1,7 @@
 import React from 'react';
 import ClickCounter from './ClickCounter';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import * as counterActions from '../../actions/counterActions';
 
 
@@ -17,7 +18,7 @@ class TrackPage extends React.Component {
 
     onCounterAClick = (counter) => {
         let counterA = {name: 'A'};
-        this.props.counterIncrement(counterA);
+        this.props.actions.counterIncrement(counterA);
         this.setState( (prevState) => {
             return {clickCounterA: prevState.clickCounterA + 1}
         }
@@ -26,7 +27,7 @@ class TrackPage extends React.Component {
 
     onCounterBClick = () => {
         let counterB = {name: 'B'};
-        this.props.counterIncrement(counterB);
+        this.props.actions.counterIncrement(counterB);
         this.setState( (prevState) => {
             return {clickCounterB: prevState.clickCounterB + 1}
         }
@@ -74,7 +75,7 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        counterIncrement: counter => dispatch(counterActions.counterIncrement(counter))
+        actions: bindActionCreators(counterActions, dispatch)
         };
     }
 
