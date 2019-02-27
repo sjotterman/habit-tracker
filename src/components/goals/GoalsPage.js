@@ -5,18 +5,21 @@ import * as goalsActions from '../../actions/goalsActions';
 
 const fakeGoals =  [
     {
+        id: 'brush-my-teeth',
         name: 'Brush my teeth',
         streak: 6,
         done: 'Not yet',
         last_done: '6 hours ago'
     },
     {
+        id: 'sit-with-my-feelings',
         name: 'Sit with my feelings',
         streak: 0,
         done: 'Yes!',
         last_done: ''
     },
     {
+        id: 'think-about-other-people',
         name: 'Think about other people',
         streak: 6,
         done: 'Yes!',
@@ -49,7 +52,7 @@ class GoalsPage extends React.Component {
 
                             {fakeGoals.map(item => {
                                 return (
-                                <tr >
+                                <tr key={item.id} >
                                     <td>
                                         <div className="card goal-card">
                                             {item.name}
