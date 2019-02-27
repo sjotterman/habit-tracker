@@ -3,6 +3,26 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as goalsActions from '../../actions/goalsActions';
 
+const fakeGoals =  [
+    {
+        name: 'Brush my teeth',
+        streak: 6,
+        done: 'Not yet',
+        last_done: '6 hours ago'
+    },
+    {
+        name: 'Sit with my feelings',
+        streak: 0,
+        done: 'Yes!',
+        last_done: ''
+    },
+    {
+        name: 'Think about other people',
+        streak: 6,
+        done: 'Yes!',
+        last_done: '20 minutes ago'
+    }
+]
 
 class GoalsPage extends React.Component {
 
@@ -14,15 +34,41 @@ class GoalsPage extends React.Component {
     render() {
         return (
             <div>
-                <h1>Goals</h1>
+                <h1 className="text-light">Goals</h1>
                 <div className="row">
-                    <div className="col-sm-4 col-m-4">
-                    Current Goals:
-                        <ul className="list-group">
-                            {this.props.goals.map(item => {
-                                return <li className="list-group-item" key={item.name}>{item.name}</li>
+                    <div className="text-light col-sm-4 col-m-4">
+                        <table className="table">
+                        <thead>
+                                <tr className="text-light">
+                                    <th scope="col">Goal</th>
+                                    <th scope="col">Streak</th>
+                                    <th scope="col">Done?</th>
+                                </tr>
+                        </thead>
+                        <tbody>
+
+                            {fakeGoals.map(item => {
+                                return (
+                                <tr >
+                                    <td>
+                                        <div className="card goal-card">
+                                            {item.name}
+                                        </div>
+                                    </td>
+                                    <td className="text-light">{item.streak}</td>
+                                    <td className="text-light">
+                                    <p>
+                                        {item.done}
+                                    </p>
+                                    <p>
+                                        {item.last_done}
+                                    </p>
+                                    </td>
+                                </tr>
+                                );
                             })}
-                        </ul>
+                        </tbody>
+                        </table>
                     </div>
                 </div>
                  

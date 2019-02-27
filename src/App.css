@@ -1,5 +1,10 @@
 .App {
   text-align: center;
+  background-color: #292d35;
+}
+
+body {
+  background-color: #292d35;
 }
 
 .App-logo {
@@ -21,6 +26,10 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.goal-card {
+  background-color: #90b4ba;
 }
 
 @keyframes App-logo-spin {

@@ -14,10 +14,12 @@ class App extends Component {
         <div className="App">
           <div>
             <MainMenu />
-            <Route exact path="/" component={HomePage} />
-            <Route path="/about" component={AboutPage} />
-            <Route path="/goals" component={GoalsPage} />
-            <Route path="/track" component={TrackPage} />
+            <div className="mainContent">
+              <Route exact path="/" component={HomePage} />
+              <Route path="/about" component={AboutPage} />
+              <Route path="/goals" component={GoalsPage} />
+              <Route path="/track" component={TrackPage} />
+            </div>
           </div>
         </div>
       </Router>
