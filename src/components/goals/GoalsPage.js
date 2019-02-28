@@ -3,29 +3,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as goalsActions from '../../actions/goalsActions';
 
-const fakeGoals =  [
-    {
-        id: 'brush-my-teeth',
-        name: 'Brush my teeth',
-        streak: 6,
-        done: 'Not yet',
-        last_done: '6 hours ago'
-    },
-    {
-        id: 'sit-with-my-feelings',
-        name: 'Sit with my feelings',
-        streak: 0,
-        done: 'Yes!',
-        last_done: ''
-    },
-    {
-        id: 'think-about-other-people',
-        name: 'Think about other people',
-        streak: 6,
-        done: 'Yes!',
-        last_done: '20 minutes ago'
-    }
-]
 
 class GoalsPage extends React.Component {
 
@@ -50,7 +27,7 @@ class GoalsPage extends React.Component {
                         </thead>
                         <tbody>
 
-                            {fakeGoals.map(item => {
+                            {this.props.goals.map(item => {
                                 return (
                                 <tr key={item.id} >
                                     <td>
