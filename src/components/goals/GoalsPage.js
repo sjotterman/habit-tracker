@@ -54,7 +54,7 @@ class GoalsPage extends React.Component {
                                 return (
                                 <tr key={item.id} >
                                     <td>
-                                        <div className="card goal-card">
+                                        <div className="btn btn-goal btn-goal-big">
                                             {item.name}
                                         </div>
                                     </td>
