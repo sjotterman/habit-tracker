@@ -14,7 +14,7 @@ class App extends Component {
         <div className="App">
           <div>
             <MainMenu />
-            <div className="mainContent">
+            <div className="mainContent text-light">
               <Route exact path="/" component={HomePage} />
               <Route path="/about" component={AboutPage} />
               <Route path="/goals" component={GoalsPage} />

@@ -15,21 +15,21 @@ const initialState = {
             id: 'brush-my-teeth',
             name: 'Brush my teeth',
             streak: 6,
-            done: 'Not yet',
-            last_done: '6 hours ago'
+            done: false,
+            last_done: 'two days ago'
         },
         {
             id: 'sit-with-my-feelings',
             name: 'Sit with my feelings',
             streak: 0,
-            done: 'Yes!',
-            last_done: ''
+            done: false,
+            last_done: 'Never'
         },
         {
             id: 'think-about-other-people',
             name: 'Think about other people',
             streak: 6,
-            done: 'Yes!',
+            done: true,
             last_done: '20 minutes ago'
         }
     ]

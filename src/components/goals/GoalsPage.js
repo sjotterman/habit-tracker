@@ -2,14 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as goalsActions from '../../actions/goalsActions';
+import GoalRow from './GoalRow';
 
 
 class GoalsPage extends React.Component {
-
-    constructor(props, context){
-        super(props, context);
-
-    }
 
     render() {
         return (
@@ -29,22 +25,7 @@ class GoalsPage extends React.Component {
 
                             {this.props.goals.map(item => {
                                 return (
-                                <tr key={item.id} >
-                                    <td>
-                                        <div className="btn btn-goal btn-goal-big">
-                                            {item.name}
-                                        </div>
-                                    </td>
-                                    <td className="text-light">{item.streak}</td>
-                                    <td className="text-light">
-                                    <p>
-                                        {item.done}
-                                    </p>
-                                    <p>
-                                        {item.last_done}
-                                    </p>
-                                    </td>
-                                </tr>
+                                    <GoalRow goal={item} onGoalToggle={() => this.props.actions.toggleGoal(item.id)} />
                                 );
                             })}
                         </tbody>
