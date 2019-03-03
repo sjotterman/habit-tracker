@@ -38,4 +38,34 @@ describe('goals reducer', () => {
           nextState
           )
       });
+
+    it('should handle GOAL_TOGGLED to false ', () => {
+      const initialState =
+         [
+            {
+                id: 'eat-food',
+                name: 'Eat Food',
+                streak: 6,
+                done: true,
+                last_done: 'today'
+            },
+        ];
+      const nextState =
+         [
+            {
+                id: 'eat-food',
+                name: 'Eat Food',
+                streak: 6,
+                done: false,
+                last_done: 'today'
+            },
+        ];
+      const action = {
+        type: actions.GOAL_TOGGLED,
+        goalId: 'eat-food',
+      };
+        expect(goalsReducer(initialState, action)).toEqual(
+          nextState
+          )
+      });
 });
