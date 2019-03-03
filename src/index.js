@@ -16,25 +16,35 @@ const initialState = {
             name: 'Brush my teeth',
             streak: 6,
             done: false,
-            last_done: 'two days ago'
+            dates_done: [
+                  '2019-02-01',
+                  '2019-02-02',
+                  '2019-02-03',
+                  '2019-02-04'
+            ]
         },
         {
             id: 'sit-with-my-feelings',
             name: 'Sit with my feelings',
             streak: 0,
             done: false,
-            last_done: 'Never'
+            dates_done: [
+            ]
         },
         {
             id: 'think-about-other-people',
             name: 'Think about other people',
             streak: 6,
             done: true,
-            last_done: '20 minutes ago'
+            dates_done: [
+                  '2019-02-01',
+                  '2019-02-02',
+                  '2019-02-03',
+                  '2019-02-04'
+            ]
         }
     ]
 };
-
 const store = configureStore(initialState);
 
 ReactDOM.render(

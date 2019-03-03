@@ -2,6 +2,10 @@ import React from 'react';
 
 const GoalRow = (props) => {
     const { goal }  = props;
+    let mostRecentDone = 'never';
+    if(goal.dates_done.length > 0){
+        mostRecentDone = goal.dates_done[goal.dates_done.length - 1];
+    }
     return (
                                 <tr key={goal.id} >
                                 <td>
@@ -16,7 +20,7 @@ const GoalRow = (props) => {
                                     {goal.done ? 'Yes!' : 'Not yet!'}
                                 </p>
                                 <p>
-                                    {goal.last_done}
+                                    Done: {mostRecentDone}
                                 </p>
                                 </td>
                             </tr>
