@@ -17,7 +17,8 @@ class GoalsPage extends React.Component {
                         <thead>
                                 <tr className="text-light">
                                     <th scope="col">Goal</th>
-                                    <th scope="col">Streak</th>
+                                    <th scope="col">Best Streak</th>
+                                    <th scope="col">Current Streak</th>
                                     <th scope="col">Done?</th>
                                 </tr>
                         </thead>
