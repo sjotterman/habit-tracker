@@ -23,9 +23,9 @@ class GoalsPage extends React.Component {
                         </thead>
                         <tbody>
 
-                            {this.props.goals.map(item => {
+                            {this.props.goals.map((item, id) => {
                                 return (
-                                    <GoalRow goal={item} onGoalToggle={() => this.props.actions.toggleGoal(item.id)} />
+                                    <GoalRow goal={item} key={id} onGoalToggle={() => this.props.actions.toggleGoal(item.id)} />
                                 );
                             })}
                         </tbody>
