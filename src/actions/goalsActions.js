@@ -1,8 +1,8 @@
 import * as types from './actionTypes';
 import { currentDateTime }  from '../utils/timeFormatter';
 
-export function createGoal(counter) {
-    return { type: types.GOAL_CREATED, counter}
+export function createGoal(goal) {
+    return { type: types.GOAL_CREATED, goal}
 }
 
 export function toggleGoal(goalId, date) {

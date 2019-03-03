@@ -12,9 +12,6 @@ const MainMenu = () => {
                     <Link to="/goals" className="nav-link">Goals</Link>
                 </div>
                 <div className="col-xs-4">
-                    <Link to="/track" className="nav-link">Track</Link>
-                </div>
-                <div className="col-xs-4">
                     <Link to="/about" className="nav-link">About Page</Link>
                 </div>
             </div>

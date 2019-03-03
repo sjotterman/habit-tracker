@@ -20,7 +20,7 @@ const GoalRow = (props) => {
                                     {goal.done ? 'Yes!' : 'Not yet!'}
                                 </p>
                                 <p>
-                                    Done: {mostRecentDone}
+                                    Most recently done: {mostRecentDone}
                                 </p>
                                 </td>
                             </tr>
