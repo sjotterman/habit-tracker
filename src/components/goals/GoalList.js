@@ -5,7 +5,7 @@ const GoalList = (props) => {
    let { goals, onGoalToggle } = props; 
     return (
         <div className="row">
-        <div className="text-light col-sm-4 col-m-4">
+        <div className="text-light">
             <table className="table">
             <thead>
                     <tr className="text-light">
