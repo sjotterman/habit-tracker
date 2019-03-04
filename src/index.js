@@ -5,43 +5,12 @@ import 'bootstrap/dist/css/bootstrap.css';
 import configureStore from './store/configureStore';
 import {Provider} from 'react-redux';
 import App from './App';
+import { loadGoals } from './actions/goalsActions';
 import * as serviceWorker from './serviceWorker';
 
-// Testing only
-// TODO: Replace with mock api call
-const initialState = {
-    goals: [
-        {
-            id: 'brush-my-teeth',
-            name: 'Brush my teeth',
-            done: false,
-            dates_done: [
-                  '2019-03-01',
-                  '2019-03-02',
-            ]
-        },
-        {
-            id: 'sit-with-my-feelings',
-            name: 'Sit with my feelings',
-            done: false,
-            dates_done: [
-            ]
-        },
-        {
-            id: 'think-about-other-people',
-            name: 'Think about other people',
-            done: true,
-            dates_done: [
-                  '2019-02-01',
-                  '2019-02-02',
-                  '2019-02-03',
-                  '2019-02-04'
-            ]
-        }
-    ]
-};
-const store = configureStore(initialState);
 
+const store = configureStore();
+store.dispatch(loadGoals());
 ReactDOM.render(
     <Provider store={store}>
         <App />

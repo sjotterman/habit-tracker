@@ -21,6 +21,9 @@ export default function goalsReducer(state = [], action) {
             });
             return updatedGoals;
 
+        case types.LOAD_GOALS_SUCCESS:
+            return action.goals;
+
         default:
             return state;
     }

@@ -8,10 +8,48 @@ describe('goals reducer', () => {
           )
       });
 
-    
+    it('should handle loading all goals', () => {
+      const initialState = [];
+      const allGoals =
+         [
+            {
+                id: 'brush-my-teeth',
+                name: 'Brush my teeth',
+                streak: 6,
+                done: false,
+                dates_done: [
+                  '2019-02-01',
+                  '2019-02-02',
+                  '2019-02-03',
+                  '2019-02-04'
+                ]
+            },
+            {
+                id: 'eat-food',
+                name: 'Eat food',
+                streak: 6,
+                done: true,
+                dates_done: [
+                  '2019-02-01',
+                  '2019-02-02',
+                  '2019-02-03',
+                  '2019-02-04'
+                ]
+            },
+        ];
+      const action = {
+        type: actions.LOAD_GOALS_SUCCESS,
+        goals: allGoals
+      };
+        expect(goalsReducer(initialState, action)).toEqual(
+          allGoals
+          );
+      });
+
+
     it('should handle GOAL_TOGGLED to true on new date ', () => {
       const testDate = '2019-02-05';
-      const initialState = 
+      const initialState =
          [
             {
                 id: 'brush-my-teeth',
@@ -26,7 +64,7 @@ describe('goals reducer', () => {
                 ]
             },
         ];
-      const nextState = 
+      const nextState =
          [
             {
                 id: 'brush-my-teeth',
@@ -54,7 +92,7 @@ describe('goals reducer', () => {
 
     it('should handle GOAL_TOGGLED to true on older date ', () => {
       const testDate = '2019-02-04';
-      const initialState = 
+      const initialState =
          [
             {
                 id: 'brush-my-teeth',
@@ -69,7 +107,7 @@ describe('goals reducer', () => {
                 ]
             },
         ];
-      const nextState = 
+      const nextState =
          [
             {
                 id: 'brush-my-teeth',
@@ -97,7 +135,7 @@ describe('goals reducer', () => {
 
     it('should handle GOAL_TOGGLED to false ', () => {
       const testDate = '2019-02-05';
-      const initialState = 
+      const initialState =
          [
             {
                 id: 'brush-my-teeth',
@@ -113,7 +151,7 @@ describe('goals reducer', () => {
                 ]
             },
         ];
-      const nextState = 
+      const nextState =
          [
             {
                 id: 'brush-my-teeth',

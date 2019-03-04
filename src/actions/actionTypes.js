@@ -1,2 +1,3 @@
 export const GOAL_CREATED = 'GOAL_CREATED';
 export const GOAL_TOGGLED = 'GOAL_TOGGLED';
+export const LOAD_GOALS_SUCCESS = 'LOAD_GOALS_SUCCESS';
