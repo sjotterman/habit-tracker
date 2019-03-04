@@ -5,9 +5,8 @@ export default function goalsReducer(state = [], action) {
         case types.GOAL_TOGGLED:
             let updatedGoals = state.map( item => {
                 if (item.id === action.goalId) {
-                    let newItem = item;
-                    const done = newItem.done ? false : true;
-                    let dates_done = newItem.dates_done;
+                    const done = item.done ? false : true;
+                    let dates_done = [...item.dates_done];
                     if (done) {
                         dates_done.push(action.date);
                         dates_done.sort();
@@ -18,7 +17,7 @@ export default function goalsReducer(state = [], action) {
                     }
                     return { ...item, done, dates_done };
                 }
-                return item;
+                return {...item};
             });
             return updatedGoals;
 
