@@ -21,6 +21,16 @@ export default function goalsReducer(state = [], action) {
             });
             return updatedGoals;
 
+        case types.GOAL_CREATED:
+            let newGoal = action.goal;
+            newGoal = {
+                ...newGoal,
+                dates_done: [],
+                done: false,
+                streak: 0
+            };
+            return [...state, newGoal] ;
+
         case types.LOAD_GOALS_SUCCESS:
             return action.goals;
 

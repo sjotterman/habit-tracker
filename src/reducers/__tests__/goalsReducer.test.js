@@ -175,4 +175,31 @@ describe('goals reducer', () => {
           nextState
           )
       });
+
+    it('should create a new goal', () => {
+      const initialState = [
+      ];
+      const nextState =
+         [
+            {
+                id: 'eat-food',
+                name: 'Eat food',
+                streak: 0,
+                done: false,
+                dates_done: [
+                ]
+            },
+        ];
+        const action = {
+          type: actions.GOAL_CREATED,
+          goal: {
+            id: 'eat-food',
+            name: 'Eat food'
+          },
+        };
+        expect(goalsReducer(initialState, action)).toEqual(
+          nextState
+        );
+
+    });
 });
