@@ -1,4 +1,4 @@
-import * as actions from '../../actions/actionTypes';
+import * as types from '../../actions/actionTypes';
 import goalsReducer from '../goalsReducer';
 
 describe('goals reducer', () => {
@@ -38,7 +38,7 @@ describe('goals reducer', () => {
             },
         ];
       const action = {
-        type: actions.LOAD_GOALS_SUCCESS,
+        type: types.LOAD_GOALS_SUCCESS,
         goals: allGoals
       };
         expect(goalsReducer(initialState, action)).toEqual(
@@ -81,7 +81,7 @@ describe('goals reducer', () => {
             },
         ];
       const action = {
-        type: actions.GOAL_TOGGLED,
+        type: types.GOAL_TOGGLED,
         goalId: 'brush-my-teeth',
         date: testDate
       };
@@ -124,7 +124,7 @@ describe('goals reducer', () => {
             },
         ];
       const action = {
-        type: actions.GOAL_TOGGLED,
+        type: types.GOAL_TOGGLED,
         goalId: 'brush-my-teeth',
         date: testDate
       };
@@ -167,7 +167,7 @@ describe('goals reducer', () => {
             },
         ];
       const action = {
-        type: actions.GOAL_TOGGLED,
+        type: types.GOAL_TOGGLED,
         goalId: 'brush-my-teeth',
         date: testDate
       };
@@ -191,7 +191,7 @@ describe('goals reducer', () => {
             },
         ];
         const action = {
-          type: actions.GOAL_CREATED,
+          type: types.GOAL_CREATED,
           goal: {
             id: 'eat-food',
             name: 'Eat food'
