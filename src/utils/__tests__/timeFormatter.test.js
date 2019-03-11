@@ -89,4 +89,10 @@ describe('time formatter', () => {
 
     });
 
+    it('should format the date properly', () => {
+        const date = new Date('2019-01-01 04:00:00');
+        const formatttedDate = timeFormatter.formatDateShort(date);
+        expect(formatttedDate).toEqual('2019-01-01');
+    });
+
 });
