@@ -6,13 +6,37 @@ import ManageGoalList from './ManageGoalList';
 
 
 class ManageGoalsPage extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            fieldValue: ''
+        };
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleChange(event) {
+        this.setState( { fieldValue: event.target.value });
+    }
+
+    handleSubmit(event) {
+        alert('submitted:' + this.state.fieldValue)
+        this.props.actions.createGoal({name: this.state.fieldValue});
+        event.preventDefault();
+    }
 
     render() {
         let { goals, actions } = this.props;
         return (
             <div>
                 <h1 className="text-light">Goals</h1>
-                <ManageGoalList goals={goals} onGoalToggle={actions.toggleGoal} />
+                <ManageGoalList
+                goals={goals}
+                onGoalToggle={actions.toggleGoal}
+                handleChange={this.handleChange}
+                fieldValue={this.state.fieldValue}
+                handleSubmit={this.handleSubmit}
+                />
             </div>
         )
     }

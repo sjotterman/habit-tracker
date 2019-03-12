@@ -2,7 +2,7 @@ import React from 'react';
 import ManageGoalRow from './ManageGoalRow';
 
 const GoalList = (props) => {
-   let { goals, onGoalToggle } = props; 
+   let { goals, onGoalToggle, handleChange,fieldValue, handleSubmit } = props;
     return (
         <div className="text-light">
             <table className="table">
@@ -21,11 +21,17 @@ const GoalList = (props) => {
             <tr>
                 <td>
                     <div className="text-light">
-                        <input type="text" id='newGoal' name='newGoal' placeholder='New goal'></input>
+                        <input
+                        type="text"
+                        id='newGoal'
+                        name='newGoal'
+                        placeholder='New goal'
+                        onChange={handleChange}
+                        value={fieldValue} />
                     </div>
                 </td>
                 <td>
-                    <div className='btn btn-primary' onClick={() => alert('This will add a new goal')}>Add</div>
+                    <div className='btn btn-primary' onClick={handleSubmit}>Add</div>
 
                 </td>
             </tr>
