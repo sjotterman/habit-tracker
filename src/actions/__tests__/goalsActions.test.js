@@ -16,6 +16,17 @@
          expect(actions.createGoal(newGoal)).toEqual(expectedAction);
 
      });
+
+     it('should create an action to delete a goal',  () => {
+         const goalId = 'fake-goal';
+         const expectedAction = {
+             type: types.GOAL_DELETED,
+             goalId
+         }
+
+         expect(actions.deleteGoal(goalId)).toEqual(expectedAction);
+
+     });
      
      it('should create an action to toggle a goal with explicit date', () => {
          const goalId = 'breathe';

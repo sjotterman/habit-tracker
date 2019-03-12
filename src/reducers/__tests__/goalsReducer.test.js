@@ -202,4 +202,56 @@ describe('goals reducer', () => {
         );
 
     });
+
+      it('should delete a goal', () => {
+      const initialState =
+         [
+            {
+                id: 'brush-my-teeth',
+                name: 'Brush my teeth',
+                streak: 6,
+                done: false,
+                dates_done: [
+                  '2019-02-01',
+                  '2019-02-02',
+                  '2019-02-03',
+                  '2019-02-04'
+                ]
+            },
+            {
+                id: 'eat-food',
+                name: 'Eat food',
+                streak: 6,
+                done: true,
+                dates_done: [
+                  '2019-02-01',
+                  '2019-02-02',
+                  '2019-02-03',
+                  '2019-02-04'
+                ]
+            },
+        ];
+      const nextState =
+         [
+            {
+                id: 'brush-my-teeth',
+                name: 'Brush my teeth',
+                streak: 6,
+                done: false,
+                dates_done: [
+                  '2019-02-01',
+                  '2019-02-02',
+                  '2019-02-03',
+                  '2019-02-04'
+                ]
+            },
+        ];
+      const action = {
+        type: types.GOAL_DELETED,
+        goalId: 'eat-food'
+      };
+        expect(goalsReducer(initialState, action)).toEqual(
+          nextState
+          );
+      });
 });

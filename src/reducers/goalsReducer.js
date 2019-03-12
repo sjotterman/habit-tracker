@@ -31,6 +31,12 @@ export default function goalsReducer(state = [], action) {
             };
             return [...state, newGoal] ;
 
+        case types.GOAL_DELETED:
+            const remainingGoals = state.filter( item => {
+                return item.id !== action.goalId
+            });
+            return [...remainingGoals] ;
+
         case types.LOAD_GOALS_SUCCESS:
             return action.goals;
 

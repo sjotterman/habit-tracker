@@ -6,6 +6,10 @@ export function createGoal(goal) {
     return { type: types.GOAL_CREATED, goal};
 }
 
+export function deleteGoal(goalId) {
+    return { type: types.GOAL_DELETED, goalId };
+}
+
 export function toggleGoal(goalId, date) {
     const currentDate = currentDateTime();
 
