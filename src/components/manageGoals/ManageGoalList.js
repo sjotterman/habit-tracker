@@ -4,7 +4,6 @@ import ManageGoalRow from './ManageGoalRow';
 const GoalList = (props) => {
    let { goals, onGoalToggle } = props; 
     return (
-        <div className="row">
         <div className="text-light">
             <table className="table">
             <thead>
@@ -33,7 +32,6 @@ const GoalList = (props) => {
             </tbody>
             </table>
         </div>
-    </div>
     );
 
 }
