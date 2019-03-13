@@ -2,7 +2,7 @@ import React from 'react';
 import ManageGoalRow from './ManageGoalRow';
 
 const GoalList = (props) => {
-   let { goals, onGoalToggle, handleChange,fieldValue, handleSubmit } = props;
+   let { goals, onGoalDelete, handleChange,fieldValue, handleSubmit } = props;
     return (
         <div className="text-light">
             <table className="table">
@@ -15,7 +15,7 @@ const GoalList = (props) => {
             <tbody>
                 {goals.map((item, id) => {
                     return (
-                        <ManageGoalRow goal={item} key={id} onGoalToggle={() => onGoalToggle(item.id)} />
+                        <ManageGoalRow goal={item} key={id} onGoalDelete={() => onGoalDelete(item.id)} />
                     );
                 })}
             <tr>

@@ -20,7 +20,6 @@ class ManageGoalsPage extends React.Component {
     }
 
     handleSubmit(event) {
-        alert('submitted:' + this.state.fieldValue)
         this.props.actions.createGoal({name: this.state.fieldValue});
         event.preventDefault();
     }
@@ -32,7 +31,7 @@ class ManageGoalsPage extends React.Component {
                 <h1 className="text-light">Goals</h1>
                 <ManageGoalList
                 goals={goals}
-                onGoalToggle={actions.toggleGoal}
+                onGoalDelete={actions.deleteGoal}
                 handleChange={this.handleChange}
                 fieldValue={this.state.fieldValue}
                 handleSubmit={this.handleSubmit}
