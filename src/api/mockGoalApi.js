@@ -69,6 +69,12 @@ class GoalApi {
           //The server would generate ids and watchHref's for new courses in a real app.
           //Cloning so copy returned is passed by value rather than by reference.
           goal.id = generateId(goal);
+          goal = {
+            ...goal,
+            streak: 0,
+            done: false,
+            dates_done: []
+          };
           // course.watchHref = `http://www.pluralsight.com/courses/${course.id}`;
           goals.push(goal);
         }
