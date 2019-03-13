@@ -194,7 +194,10 @@ describe('goals reducer', () => {
           type: types.CREATE_GOAL_SUCCESS,
           goal: {
             id: 'eat-food',
-            name: 'Eat food'
+            name: 'Eat food',
+            streak: 0,
+            done: false,
+            dates_done: [],
           },
         };
         expect(goalsReducer(initialState, action)).toEqual(
@@ -230,7 +233,11 @@ describe('goals reducer', () => {
           type: types.UPDATE_GOAL_SUCCESS,
           goal: {
             id: 'eat-food',
-            name: 'Eat tasty food'
+            name: 'Eat tasty food',
+            streak: 0,
+            done: false,
+            dates_done: [
+            ]
           },
         };
         expect(goalsReducer(initialState, action)).toEqual(

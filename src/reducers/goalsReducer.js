@@ -21,23 +21,16 @@ export default function goalsReducer(state = [], action) {
             });
 
         case types.CREATE_GOAL_SUCCESS:
-            let newGoal = action.goal;
-            newGoal = {
-                ...newGoal,
-                dates_done: [],
-                done: false,
-                streak: 0
-            };
-            return [...state, newGoal] ;
+            return [
+                ...state,
+               Object.assign({}, action.goal),
+            ];
 
         case types.UPDATE_GOAL_SUCCESS:
-            return state.map( item => {
-                if (item.id === action.goal.id) {
-                    const name = action.goal.name;
-                    return { ...item, name };
-                }
-                return {...item};
-            });
+            return [
+            ...state.filter(goal => goal.id !== action.goal.id),
+            Object.assign({}, action.goal)
+            ];
 
         case types.GOAL_DELETED:
             const remainingGoals = state.filter( item => {
