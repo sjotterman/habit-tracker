@@ -191,10 +191,46 @@ describe('goals reducer', () => {
             },
         ];
         const action = {
-          type: types.GOAL_CREATED,
+          type: types.CREATE_GOAL_SUCCESS,
           goal: {
             id: 'eat-food',
             name: 'Eat food'
+          },
+        };
+        expect(goalsReducer(initialState, action)).toEqual(
+          nextState
+        );
+
+    });
+    
+    it('should update an existing goal', () => {
+      const initialState =
+         [
+            {
+                id: 'eat-food',
+                name: 'Eat food',
+                streak: 0,
+                done: false,
+                dates_done: [
+                ]
+            },
+        ];
+      const nextState =
+         [
+            {
+                id: 'eat-food',
+                name: 'Eat tasty food',
+                streak: 0,
+                done: false,
+                dates_done: [
+                ]
+            },
+        ];
+        const action = {
+          type: types.UPDATE_GOAL_SUCCESS,
+          goal: {
+            id: 'eat-food',
+            name: 'Eat tasty food'
           },
         };
         expect(goalsReducer(initialState, action)).toEqual(

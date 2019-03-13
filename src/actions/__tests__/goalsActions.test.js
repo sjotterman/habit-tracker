@@ -3,20 +3,32 @@
  import * as timeFormatter from '../../utils/timeFormatter';
 
  describe('Goals Actions', () => {
-     it('should create an action to create a goal',  () => {
+     it('should create an action on goal create success',  () => {
          const newGoal = {
-             'id': 'foo-bar',
              'name': 'Foo Bar'
          };
          const expectedAction = {
-             type: types.GOAL_CREATED,
+             type: types.CREATE_GOAL_SUCCESS,
              goal: newGoal
          }
 
-         expect(actions.createGoal(newGoal)).toEqual(expectedAction);
+         expect(actions.createGoalSuccess(newGoal)).toEqual(expectedAction);
 
      });
 
+     it('should create an action on goal update success',  () => {
+         const newGoal = {
+             'id' : 'foo-bar',
+             'name': 'Foo Bar'
+         };
+         const expectedAction = {
+             type: types.UPDATE_GOAL_SUCCESS,
+             goal: newGoal
+         }
+
+         expect(actions.updateGoalSuccess(newGoal)).toEqual(expectedAction);
+
+     });
      it('should create an action to delete a goal',  () => {
          const goalId = 'fake-goal';
          const expectedAction = {

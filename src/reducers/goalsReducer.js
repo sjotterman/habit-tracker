@@ -3,7 +3,7 @@ import * as types from '../actions/actionTypes';
 export default function goalsReducer(state = [], action) {
     switch(action.type) {
         case types.GOAL_TOGGLED:
-            let updatedGoals = state.map( item => {
+            return state.map( item => {
                 if (item.id === action.goalId) {
                     const done = item.done ? false : true;
                     let dates_done = [...item.dates_done];
@@ -19,9 +19,8 @@ export default function goalsReducer(state = [], action) {
                 }
                 return {...item};
             });
-            return updatedGoals;
 
-        case types.GOAL_CREATED:
+        case types.CREATE_GOAL_SUCCESS:
             let newGoal = action.goal;
             newGoal = {
                 ...newGoal,
@@ -30,6 +29,15 @@ export default function goalsReducer(state = [], action) {
                 streak: 0
             };
             return [...state, newGoal] ;
+
+        case types.UPDATE_GOAL_SUCCESS:
+            return state.map( item => {
+                if (item.id === action.goal.id) {
+                    const name = action.goal.name;
+                    return { ...item, name };
+                }
+                return {...item};
+            });
 
         case types.GOAL_DELETED:
             const remainingGoals = state.filter( item => {

@@ -2,8 +2,13 @@ import * as types from './actionTypes';
 import { currentDateTime }  from '../utils/timeFormatter';
 import goalApi from '../api/mockGoalApi'
 
-export function createGoal(goal) {
-    return { type: types.GOAL_CREATED, goal};
+
+export function createGoalSuccess(goal) {
+    return { type: types.CREATE_GOAL_SUCCESS, goal};
+}
+
+export function updateGoalSuccess(goal) {
+    return { type: types.UPDATE_GOAL_SUCCESS, goal};
 }
 
 export function deleteGoal(goalId) {
@@ -29,4 +34,15 @@ export function loadGoals() {
             throw(error);
         });
     }
+}
+
+export function saveGoal(goal) {
+    return function (dispatch, getState) {
+        return goalApi.saveGoal(goal).then(savedGoal => {
+            goal.id ? dispatch(updateGoalSuccess(savedGoal)) :
+                dispatch(createGoalSuccess(savedGoal));
+        }).catch(error => {
+            throw(error);
+        });
+    };
 }
