@@ -6,6 +6,7 @@
 
 import jsf from 'json-schema-faker';
 import {schema} from './mockDataSchema';
+import {goals} from './goalsData';
 import fs from 'fs';
 import chalk from 'chalk';
 
@@ -17,6 +18,7 @@ const fixedUser = {
 }
 const data = jsf.generate(schema);
 data["users"].push(fixedUser);
+data["goals"] = goals;
 const json = JSON.stringify(data);
 
 fs.writeFile("./src/api/db.json", json, function(err) {
