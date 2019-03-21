@@ -1,6 +1,6 @@
 import * as types from "./actionTypes";
 import { currentDateTime } from "../utils/timeFormatter";
-import { getAllGoals, saveNewGoal } from "../api/GoalApi";
+import { getAllGoals, saveNewGoal, deleteGoalById } from "../api/GoalApi";
 
 export function createGoalSuccess(goal) {
   return { type: types.CREATE_GOAL_SUCCESS, goal };
@@ -11,7 +11,19 @@ export function updateGoalSuccess(goal) {
 }
 
 export function deleteGoal(goalId) {
-  return { type: types.GOAL_DELETED, goalId };
+  return function(dispatch) {
+    return deleteGoalById(goalId)
+      .then(goals => {
+        dispatch(deleteGoalSuccess(goalId));
+      })
+      .catch(error => {
+        throw error;
+      });
+  };
+}
+
+export function deleteGoalSuccess(goalId) {
+  return { type: types.DELETE_GOAL_SUCCCESS, goalId };
 }
 
 export function toggleGoal(goalId, date) {
