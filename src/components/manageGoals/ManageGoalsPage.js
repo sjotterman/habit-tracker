@@ -19,7 +19,7 @@ class ManageGoalsPage extends React.Component {
   }
 
   handleSubmit(event) {
-    this.props.actions.saveGoal({ name: this.state.fieldValue });
+    this.props.actions.createGoal({ name: this.state.fieldValue });
     event.preventDefault();
   }
 
