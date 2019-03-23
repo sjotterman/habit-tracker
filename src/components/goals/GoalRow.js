@@ -8,10 +8,14 @@ import {
 const GoalRow = props => {
   const { goal } = props;
   let mostRecentDone = "never";
+  let doneToday = false;
+  const today = currentDateTime();
   if (goal.dates_done.length > 0) {
     mostRecentDone = goal.dates_done[goal.dates_done.length - 1];
+    if (today === mostRecentDone) {
+      doneToday = true;
+    }
   }
-  let today = currentDateTime();
   return (
     <tr key={goal.id}>
       <td>
@@ -29,7 +33,7 @@ const GoalRow = props => {
         {calculateCurrentStreak(goal.dates_done, today)}
       </td>
       <td className="text-light">
-        <p className="font-weight-bold">{goal.done ? "Yes!" : "Not yet!"}</p>
+        <p className="font-weight-bold">{doneToday ? "Yes!" : "Not yet!"}</p>
         <p>Most recently done: {mostRecentDone}</p>
       </td>
     </tr>

@@ -31,12 +31,14 @@ export function deleteGoalSuccess(goalId) {
   return { type: types.DELETE_GOAL_SUCCCESS, goalId };
 }
 
+/*
 export function toggleGoal(goalId, date) {
   const currentDate = currentDateTime();
 
   date = date || currentDate;
   return { type: types.GOAL_TOGGLED, goalId, date };
 }
+*/
 
 export function loadGoalsSuccess(goals) {
   return { type: types.LOAD_GOALS_SUCCESS, goals };
@@ -55,9 +57,6 @@ export function loadGoals() {
 }
 
 export function createGoal(goal) {
-  if (!goal.done) {
-    goal.done = false;
-  }
   if (!goal.dates_done) {
     goal.dates_done = [];
   }
@@ -84,8 +83,28 @@ export function updateGoal(goal) {
   };
 }
 
+export function toggleGoal(goal, date) {
+  const currentDate = currentDateTime();
+  date = date || currentDate;
+  let newGoal;
+  if (goal.dates_done.includes(date)) {
+    newGoal = markGoalIncomplete(goal, date);
+  } else {
+    newGoal = markGoalComplete(goal, date);
+  }
+  return function(dispatch, getState) {
+    return modifyGoal(newGoal)
+      .then(savedGoal => {
+        dispatch(updateGoalSuccess(savedGoal));
+      })
+      .catch(error => {
+        throw error;
+      });
+  };
+}
+
 export function markGoalComplete(goal, date) {
-  const { dates_done } = goal;
+  const dates_done = [...goal.dates_done];
   if (!dates_done.includes(date)) {
     dates_done.push(date);
     dates_done.sort();
@@ -94,7 +113,7 @@ export function markGoalComplete(goal, date) {
 }
 
 export function markGoalIncomplete(goal, date) {
-  let { dates_done } = goal;
+  let dates_done = [...goal.dates_done];
   dates_done = dates_done.filter(item => {
     return item !== date;
   });

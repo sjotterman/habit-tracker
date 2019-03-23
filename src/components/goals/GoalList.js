@@ -22,7 +22,7 @@ const GoalList = props => {
                 <GoalRow
                   goal={item}
                   key={id}
-                  onGoalToggle={() => onGoalToggle(item.id)}
+                  onGoalToggle={() => onGoalToggle(item)}
                 />
               );
             })}

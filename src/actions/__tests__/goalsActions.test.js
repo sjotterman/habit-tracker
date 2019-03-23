@@ -78,30 +78,6 @@ describe("Goals Actions", () => {
       //  expect(actions.deleteGoal(goalId)).toEqual(expectedAction);
     });
 
-    it("should create an action to toggle a goal with explicit date", () => {
-      const goalId = "breathe";
-      const date = "2019-02-04";
-      const expectedAction = {
-        type: types.GOAL_TOGGLED,
-        goalId,
-        date
-      };
-
-      expect(actions.toggleGoal(goalId, date)).toEqual(expectedAction);
-    });
-
-    it("should create an action to toggle a goal without explicit date", () => {
-      const goalId = "breathe";
-      const currentFormattedDate = timeFormatter.formatDateShort(new Date());
-      const expectedAction = {
-        type: types.GOAL_TOGGLED,
-        goalId,
-        date: currentFormattedDate
-      };
-
-      expect(actions.toggleGoal(goalId)).toEqual(expectedAction);
-    });
-
     it("should create an action to load all goals", () => {
       const goals = [
         {
@@ -200,6 +176,108 @@ describe("Goals Actions", () => {
         return store.dispatch(actions.updateGoal(goal)).then(() => {
           expect(store.getActions()).toEqual(expectedActions);
         });
+      });
+    });
+
+    describe("Toggle Goals thunk", () => {
+      it("Should create UPDATE_GOAL_SUCCESS when toggling a date complete", () => {
+        const dateToToggle = "2019-02-02";
+        const goalToToggle = {
+          name: "Existing Goal",
+          done: false,
+          dates_done: [],
+          id: "existing-goal-id"
+        };
+        const modifiedGoal = {
+          name: "Existing Goal",
+          done: false,
+          dates_done: [dateToToggle],
+          id: "existing-goal-id"
+        };
+        fetchMock.putOnce(`http://localhost:3001/goals/${goalToToggle.id}`, {
+          body: modifiedGoal,
+          headers: { "content-type": "application/json" }
+        });
+        // types.BEGIN_API_CALL not yet implented
+        // const expectedActions = [
+        //   {type: types.BEGIN_API_CALL},
+        //   {type: types.LOAD_GOALS_SUCCESS, goals}
+        // ];
+        const expectedActions = [
+          { type: types.UPDATE_GOAL_SUCCESS, goal: modifiedGoal }
+        ];
+        const store = mockStore({ goals: [goalToToggle] });
+        return store
+          .dispatch(actions.toggleGoal(goalToToggle, dateToToggle))
+          .then(() => {
+            expect(store.getActions()).toEqual(expectedActions);
+          });
+      });
+
+      it("Should create UPDATE_GOAL_SUCCESS when toggling today complete", () => {
+        const dateToToggle = timeFormatter.currentDateTime();
+        const goalToToggle = {
+          name: "Existing Goal",
+          done: false,
+          dates_done: [],
+          id: "existing-goal-id"
+        };
+        const modifiedGoal = {
+          name: "Existing Goal",
+          done: false,
+          dates_done: [dateToToggle],
+          id: "existing-goal-id"
+        };
+        fetchMock.putOnce(`http://localhost:3001/goals/${goalToToggle.id}`, {
+          body: modifiedGoal,
+          headers: { "content-type": "application/json" }
+        });
+        // types.BEGIN_API_CALL not yet implented
+        // const expectedActions = [
+        //   {type: types.BEGIN_API_CALL},
+        //   {type: types.LOAD_GOALS_SUCCESS, goals}
+        // ];
+        const expectedActions = [
+          { type: types.UPDATE_GOAL_SUCCESS, goal: modifiedGoal }
+        ];
+        const store = mockStore({ goals: [goalToToggle] });
+        return store.dispatch(actions.toggleGoal(goalToToggle)).then(() => {
+          expect(store.getActions()).toEqual(expectedActions);
+        });
+      });
+
+      it("Should create UPDATE_GOAL_SUCCESS when toggling a date incomplete", () => {
+        const dateToToggle = "2019-02-02";
+        const goalToToggle = {
+          name: "Existing Goal",
+          done: false,
+          dates_done: [dateToToggle],
+          id: "existing-goal-id"
+        };
+        const modifiedGoal = {
+          name: "Existing Goal",
+          done: false,
+          dates_done: [],
+          id: "existing-goal-id"
+        };
+        fetchMock.putOnce(`http://localhost:3001/goals/${goalToToggle.id}`, {
+          body: modifiedGoal,
+          headers: { "content-type": "application/json" }
+        });
+        // types.BEGIN_API_CALL not yet implented
+        // const expectedActions = [
+        //   {type: types.BEGIN_API_CALL},
+        //   {type: types.LOAD_GOALS_SUCCESS, goals}
+        // ];
+        const expectedActions = [
+          { type: types.UPDATE_GOAL_SUCCESS, goal: modifiedGoal }
+        ];
+        const store = mockStore({ goals: [goalToToggle] });
+        return store
+          .dispatch(actions.toggleGoal(goalToToggle, dateToToggle))
+          .then(() => {
+            expect(store.getActions()).toEqual(expectedActions);
+          });
       });
     });
 
