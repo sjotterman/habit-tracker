@@ -1,7 +1,8 @@
 export default function getBaseUrl() {
   //TODO: Implement later
-  // return getQueryStringParameterByName('useMockApi') ? 'http://localhost:3001/' : 'https://vast-everglades-76962.herokuapp.com/';
-  return "http://localhost:3001/";
+  return process.env.NODE_ENV === "development"
+    ? "http://localhost:3001/"
+    : "https://goals-api.server.samuelotterman.com/api";
 }
 
 function getQueryStringParameterByName(name, url) {
