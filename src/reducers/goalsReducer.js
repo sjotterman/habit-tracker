@@ -6,10 +6,12 @@ export default function goalsReducer(state = [], action) {
       return [...state, Object.assign({}, action.goal)];
 
     case types.UPDATE_GOAL_SUCCESS:
-      return [
-        ...state.filter(goal => goal.id !== action.goal.id),
-        Object.assign({}, action.goal)
-      ];
+      return state.map(goal => {
+        if (goal.id === action.goal.id) {
+          return action.goal;
+        }
+        return { ...goal };
+      });
 
     case types.DELETE_GOAL_SUCCCESS:
       const remainingGoals = state.filter(item => {

@@ -53,12 +53,22 @@ describe("goals reducer", () => {
         id: "eat-food",
         name: "Eat food",
         dates_done: []
+      },
+      {
+        id: "drink-water",
+        name: "Drink water",
+        dates_done: []
       }
     ];
     const nextState = [
       {
         id: "eat-food",
         name: "Eat tasty food",
+        dates_done: []
+      },
+      {
+        id: "drink-water",
+        name: "Drink water",
         dates_done: []
       }
     ];
