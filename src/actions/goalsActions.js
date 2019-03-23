@@ -68,3 +68,20 @@ export function saveGoal(goal) {
       });
   };
 }
+
+export function markGoalComplete(goal, date) {
+  const { dates_done } = goal;
+  if (!dates_done.includes(date)) {
+    dates_done.push(date);
+    dates_done.sort();
+  }
+  return { ...goal, dates_done };
+}
+
+export function markGoalIncomplete(goal, date) {
+  let { dates_done } = goal;
+  dates_done = dates_done.filter(item => {
+    return item !== date;
+  });
+  return { ...goal, dates_done };
+}
