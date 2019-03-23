@@ -32,6 +32,11 @@ export function saveNewGoal(goal) {
   return post("goals", goal);
 }
 
+export function modifyGoal(goal) {
+  const { id } = goal;
+  return put(`goals/${id}`, goal);
+}
+
 function get(url) {
   return fetch(baseUrl + url).then(onSuccess, onError);
 }
@@ -39,6 +44,16 @@ function get(url) {
 function post(url, data) {
   return fetch(baseUrl + url, {
     method: "post",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+  }).then(onSuccess, onError);
+}
+
+function put(url, data) {
+  return fetch(baseUrl + url, {
+    method: "put",
     headers: {
       "Content-Type": "application/json"
     },

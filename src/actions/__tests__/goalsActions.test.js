@@ -162,9 +162,7 @@ describe("Goals Actions", () => {
     describe("Create Goals Thunk", () => {
       it("should create BEGIN_API_CALL and CREATE_GOAL_SUCCESS when creating a goal", () => {
         const goal = {
-          name: "New Goal",
-          done: true,
-          dates_done: []
+          name: "New Goal"
         };
         fetchMock.postOnce("http://localhost:3001/goals", {
           body: goal,
@@ -177,7 +175,7 @@ describe("Goals Actions", () => {
         // ];
         const expectedActions = [{ type: types.CREATE_GOAL_SUCCESS, goal }];
         const store = mockStore({ goals: [] });
-        return store.dispatch(actions.saveGoal(goal)).then(() => {
+        return store.dispatch(actions.createGoal(goal)).then(() => {
           expect(store.getActions()).toEqual(expectedActions);
         });
       });
@@ -188,7 +186,7 @@ describe("Goals Actions", () => {
           done: false,
           id: "existing-goal-id"
         };
-        fetchMock.postOnce("http://localhost:3001/goals", {
+        fetchMock.putOnce(`http://localhost:3001/goals/${goal.id}`, {
           body: goal,
           headers: { "content-type": "application/json" }
         });
@@ -199,7 +197,7 @@ describe("Goals Actions", () => {
         // ];
         const expectedActions = [{ type: types.UPDATE_GOAL_SUCCESS, goal }];
         const store = mockStore({ goals: [] });
-        return store.dispatch(actions.saveGoal(goal)).then(() => {
+        return store.dispatch(actions.updateGoal(goal)).then(() => {
           expect(store.getActions()).toEqual(expectedActions);
         });
       });
