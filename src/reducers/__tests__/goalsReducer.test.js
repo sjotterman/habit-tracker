@@ -12,15 +12,11 @@ describe("goals reducer", () => {
       {
         id: "brush-my-teeth",
         name: "Brush my teeth",
-        streak: 6,
-        done: false,
         dates_done: ["2019-02-01", "2019-02-02", "2019-02-03", "2019-02-04"]
       },
       {
         id: "eat-food",
         name: "Eat food",
-        streak: 6,
-        done: true,
         dates_done: ["2019-02-01", "2019-02-02", "2019-02-03", "2019-02-04"]
       }
     ];
@@ -37,8 +33,6 @@ describe("goals reducer", () => {
       {
         id: "eat-food",
         name: "Eat food",
-        streak: 0,
-        done: false,
         dates_done: []
       }
     ];
@@ -47,8 +41,6 @@ describe("goals reducer", () => {
       goal: {
         id: "eat-food",
         name: "Eat food",
-        streak: 0,
-        done: false,
         dates_done: []
       }
     };
@@ -60,8 +52,6 @@ describe("goals reducer", () => {
       {
         id: "eat-food",
         name: "Eat food",
-        streak: 0,
-        done: false,
         dates_done: []
       }
     ];
@@ -69,8 +59,6 @@ describe("goals reducer", () => {
       {
         id: "eat-food",
         name: "Eat tasty food",
-        streak: 0,
-        done: false,
         dates_done: []
       }
     ];
@@ -79,8 +67,6 @@ describe("goals reducer", () => {
       goal: {
         id: "eat-food",
         name: "Eat tasty food",
-        streak: 0,
-        done: false,
         dates_done: []
       }
     };
@@ -92,8 +78,6 @@ describe("goals reducer", () => {
       {
         id: "eat-food",
         name: "Eat food",
-        streak: 0,
-        done: false,
         dates_done: ["2019-03-03"]
       }
     ];
@@ -101,8 +85,6 @@ describe("goals reducer", () => {
       {
         id: "eat-food",
         name: "Eat tasty food",
-        streak: 0,
-        done: false,
         dates_done: []
       }
     ];
@@ -111,8 +93,6 @@ describe("goals reducer", () => {
       goal: {
         id: "eat-food",
         name: "Eat tasty food",
-        streak: 0,
-        done: false,
         dates_done: []
       }
     };
@@ -124,8 +104,6 @@ describe("goals reducer", () => {
       {
         id: "eat-food",
         name: "Eat food",
-        streak: 0,
-        done: false,
         dates_done: []
       }
     ];
@@ -133,8 +111,6 @@ describe("goals reducer", () => {
       {
         id: "eat-food",
         name: "Eat tasty food",
-        streak: 0,
-        done: false,
         dates_done: ["2019-03-03"]
       }
     ];
@@ -143,8 +119,6 @@ describe("goals reducer", () => {
       goal: {
         id: "eat-food",
         name: "Eat tasty food",
-        streak: 0,
-        done: false,
         dates_done: ["2019-03-03"]
       }
     };
@@ -156,15 +130,11 @@ describe("goals reducer", () => {
       {
         id: "brush-my-teeth",
         name: "Brush my teeth",
-        streak: 6,
-        done: false,
         dates_done: ["2019-02-01", "2019-02-02", "2019-02-03", "2019-02-04"]
       },
       {
         id: "eat-food",
         name: "Eat food",
-        streak: 6,
-        done: true,
         dates_done: ["2019-02-01", "2019-02-02", "2019-02-03", "2019-02-04"]
       }
     ];
@@ -172,8 +142,6 @@ describe("goals reducer", () => {
       {
         id: "brush-my-teeth",
         name: "Brush my teeth",
-        streak: 6,
-        done: false,
         dates_done: ["2019-02-01", "2019-02-02", "2019-02-03", "2019-02-04"]
       }
     ];
