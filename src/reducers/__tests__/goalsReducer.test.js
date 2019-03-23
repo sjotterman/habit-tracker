@@ -253,7 +253,7 @@ describe("goals reducer", () => {
     expect(goalsReducer(initialState, action)).toEqual(nextState);
   });
 
-  xit("should delete a goal", () => {
+  it("should delete a goal", () => {
     const initialState = [
       {
         id: "brush-my-teeth",
@@ -280,7 +280,7 @@ describe("goals reducer", () => {
       }
     ];
     const action = {
-      type: types.GOAL_DELETED,
+      type: types.DELETE_GOAL_SUCCCESS,
       goalId: "eat-food"
     };
     expect(goalsReducer(initialState, action)).toEqual(nextState);
