@@ -1,11 +1,13 @@
-import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import './App.css';
-import HomePage from './components/home/HomePage';
-import AboutPage from './components/about/AboutPage';
-import MainMenu from './components/shared/MainMenu';
-import GoalsPage from './components/goals/GoalsPage';
-import ManageGoalsPage from './components/manageGoals/ManageGoalsPage';
+import React, { Component } from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import "./App.css";
+import HomePage from "./components/home/HomePage";
+import AboutPage from "./components/about/AboutPage";
+import MainMenu from "./components/shared/MainMenu";
+import GoalsPage from "./components/goals/GoalsPage";
+import ManageGoalsPage from "./components/manageGoals/ManageGoalsPage";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 class App extends Component {
   render() {
@@ -21,6 +23,7 @@ class App extends Component {
               <Route path="/goals" component={GoalsPage} />
             </div>
           </div>
+          <ToastContainer autoClose={3000} hideProgressBar />
         </div>
       </Router>
     );

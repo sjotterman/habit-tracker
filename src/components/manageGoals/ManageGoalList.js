@@ -18,7 +18,7 @@ const GoalList = props => {
               <ManageGoalRow
                 goal={item}
                 key={id}
-                onGoalDelete={() => onGoalDelete(item.id)}
+                onGoalDelete={() => onGoalDelete(item)}
               />
             );
           })}

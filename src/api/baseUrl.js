@@ -1,8 +1,9 @@
 export default function getBaseUrl() {
   //TODO: Implement later
-  return process.env.NODE_ENV === "development"
-    ? "http://localhost:3001/"
-    : "https://goals-api.server.samuelotterman.com/api/";
+  return process.env.NODE_ENV === "production"
+    ? "https://goals-api.server.samuelotterman.com/api/"
+    : "http://localhost:3001/";
+  // return "https://goals-api.server.samuelotterman.com/api/";
 }
 
 function getQueryStringParameterByName(name, url) {
