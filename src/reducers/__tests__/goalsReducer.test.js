@@ -50,24 +50,24 @@ describe("goals reducer", () => {
   it("should update an existing goal", () => {
     const initialState = [
       {
-        id: "eat-food",
+        _id: "eat-food",
         name: "Eat food",
         dates_done: []
       },
       {
-        id: "drink-water",
+        _id: "drink-water",
         name: "Drink water",
         dates_done: []
       }
     ];
     const nextState = [
       {
-        id: "eat-food",
+        _id: "eat-food",
         name: "Eat tasty food",
         dates_done: []
       },
       {
-        id: "drink-water",
+        _id: "drink-water",
         name: "Drink water",
         dates_done: []
       }
@@ -75,7 +75,7 @@ describe("goals reducer", () => {
     const action = {
       type: types.UPDATE_GOAL_SUCCESS,
       goal: {
-        id: "eat-food",
+        _id: "eat-food",
         name: "Eat tasty food",
         dates_done: []
       }
@@ -138,19 +138,19 @@ describe("goals reducer", () => {
   it("should delete a goal", () => {
     const initialState = [
       {
-        id: "brush-my-teeth",
+        _id: "brush-my-teeth",
         name: "Brush my teeth",
         dates_done: ["2019-02-01", "2019-02-02", "2019-02-03", "2019-02-04"]
       },
       {
-        id: "eat-food",
+        _id: "eat-food",
         name: "Eat food",
         dates_done: ["2019-02-01", "2019-02-02", "2019-02-03", "2019-02-04"]
       }
     ];
     const nextState = [
       {
-        id: "brush-my-teeth",
+        _id: "brush-my-teeth",
         name: "Brush my teeth",
         dates_done: ["2019-02-01", "2019-02-02", "2019-02-03", "2019-02-04"]
       }

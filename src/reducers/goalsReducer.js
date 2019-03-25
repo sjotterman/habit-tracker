@@ -7,7 +7,7 @@ export default function goalsReducer(state = [], action) {
 
     case types.UPDATE_GOAL_SUCCESS:
       return state.map(goal => {
-        if (goal.id === action.goal.id) {
+        if (goal._id === action.goal._id) {
           return action.goal;
         }
         return { ...goal };
@@ -15,7 +15,7 @@ export default function goalsReducer(state = [], action) {
 
     case types.DELETE_GOAL_SUCCCESS:
       const remainingGoals = state.filter(item => {
-        return item.id !== action.goalId;
+        return item._id !== action.goalId;
       });
       return [...remainingGoals];
 

@@ -17,7 +17,7 @@ const GoalRow = props => {
     }
   }
   return (
-    <tr key={goal.id}>
+    <tr key={goal._id}>
       <td>
         <div
           className={

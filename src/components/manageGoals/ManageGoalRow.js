@@ -3,7 +3,7 @@ import React from "react";
 const ManageGoalRow = props => {
   const { goal, onGoalDelete } = props;
   return (
-    <tr key={goal.id}>
+    <tr key={goal._id}>
       <td>
         <div className="text-light">{goal.name}</div>
       </td>

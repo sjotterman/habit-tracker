@@ -28,7 +28,7 @@ class ManageGoalsPage extends React.Component {
   }
 
   handleDelete(goal) {
-    this.props.actions.deleteGoal(goal.id).then(() => {
+    this.props.actions.deleteGoal(goal._id).then(() => {
       toast.info(`Deleted "${goal.name}"`);
     });
     // event.preventDefault();

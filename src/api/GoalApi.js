@@ -33,8 +33,8 @@ export function saveNewGoal(goal) {
 }
 
 export function modifyGoal(goal) {
-  const { id } = goal;
-  return put(`goals/${id}`, goal);
+  const { _id } = goal;
+  return put(`goals/${_id}`, goal);
 }
 
 function get(url) {

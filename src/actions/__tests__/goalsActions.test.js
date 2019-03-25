@@ -13,12 +13,12 @@ describe("Goals Actions", () => {
   describe("Helper functions", () => {
     it("Should toggle an incomplete goal to be complete", () => {
       const beforeGoal = {
-        id: "goalId",
+        _id: "goalId",
         dates_done: ["2019-04-04"]
       };
       const goalDoneDate = "2019-03-03";
       const afterGoal = {
-        id: "goalId",
+        _id: "goalId",
         dates_done: [goalDoneDate, "2019-04-04"]
       };
       expect(actions.markGoalComplete(beforeGoal, goalDoneDate)).toEqual(
@@ -29,11 +29,11 @@ describe("Goals Actions", () => {
     it("Should toggle a complete goal to be incomplete", () => {
       const goalDoneDate = "2019-03-03";
       const beforeGoal = {
-        id: "goalId",
+        _id: "goalId",
         dates_done: [goalDoneDate, "2019-04-04"]
       };
       const afterGoal = {
-        id: "goalId",
+        _id: "goalId",
         dates_done: ["2019-04-04"]
       };
       expect(actions.markGoalIncomplete(beforeGoal, goalDoneDate)).toEqual(
@@ -57,7 +57,7 @@ describe("Goals Actions", () => {
 
     it("should create an action on goal update success", () => {
       const newGoal = {
-        id: "foo-bar",
+        _id: "foo-bar",
         name: "Foo Bar"
       };
       const expectedAction = {
@@ -81,14 +81,14 @@ describe("Goals Actions", () => {
     it("should create an action to load all goals", () => {
       const goals = [
         {
-          id: "brush-my-teeth",
+          _id: "brush-my-teeth",
           name: "Brush my teeth",
           streak: 6,
           done: false,
           dates_done: ["2019-02-01", "2019-02-02", "2019-02-03", "2019-02-04"]
         },
         {
-          id: "eat-food",
+          _id: "eat-food",
           name: "Eat food",
           streak: 6,
           done: true,
@@ -160,9 +160,9 @@ describe("Goals Actions", () => {
         const goal = {
           name: "Existing Goal",
           done: false,
-          id: "existing-goal-id"
+          _id: "existing-goal-id"
         };
-        fetchMock.putOnce(`http://localhost:3001/goals/${goal.id}`, {
+        fetchMock.putOnce(`http://localhost:3001/goals/${goal._id}`, {
           body: goal,
           headers: { "content-type": "application/json" }
         });
@@ -186,15 +186,15 @@ describe("Goals Actions", () => {
           name: "Existing Goal",
           done: false,
           dates_done: [],
-          id: "existing-goal-id"
+          _id: "existing-goal-id"
         };
         const modifiedGoal = {
           name: "Existing Goal",
           done: false,
           dates_done: [dateToToggle],
-          id: "existing-goal-id"
+          _id: "existing-goal-id"
         };
-        fetchMock.putOnce(`http://localhost:3001/goals/${goalToToggle.id}`, {
+        fetchMock.putOnce(`http://localhost:3001/goals/${goalToToggle._id}`, {
           body: modifiedGoal,
           headers: { "content-type": "application/json" }
         });
@@ -220,7 +220,7 @@ describe("Goals Actions", () => {
           name: "Existing Goal",
           done: false,
           dates_done: [],
-          id: "existing-goal-id"
+          _id: "existing-goal-id"
         };
         const modifiedGoal = {
           name: "Existing Goal",
@@ -228,7 +228,7 @@ describe("Goals Actions", () => {
           dates_done: [dateToToggle],
           id: "existing-goal-id"
         };
-        fetchMock.putOnce(`http://localhost:3001/goals/${goalToToggle.id}`, {
+        fetchMock.putOnce(`http://localhost:3001/goals/${goalToToggle._id}`, {
           body: modifiedGoal,
           headers: { "content-type": "application/json" }
         });
@@ -252,15 +252,15 @@ describe("Goals Actions", () => {
           name: "Existing Goal",
           done: false,
           dates_done: [dateToToggle],
-          id: "existing-goal-id"
+          _id: "existing-goal-id"
         };
         const modifiedGoal = {
           name: "Existing Goal",
           done: false,
           dates_done: [],
-          id: "existing-goal-id"
+          _id: "existing-goal-id"
         };
-        fetchMock.putOnce(`http://localhost:3001/goals/${goalToToggle.id}`, {
+        fetchMock.putOnce(`http://localhost:3001/goals/${goalToToggle._id}`, {
           body: modifiedGoal,
           headers: { "content-type": "application/json" }
         });
@@ -286,22 +286,25 @@ describe("Goals Actions", () => {
         const goalToDelete = {
           name: "Existing Goal",
           done: false,
-          id: "existing-goal-id"
+          _id: "existing-goal-id"
         };
-        fetchMock.deleteOnce(`http://localhost:3001/goals/${goalToDelete.id}`, {
-          body: {},
-          headers: { "content-type": "application/json" }
-        });
+        fetchMock.deleteOnce(
+          `http://localhost:3001/goals/${goalToDelete._id}`,
+          {
+            body: {},
+            headers: { "content-type": "application/json" }
+          }
+        );
         // types.BEGIN_API_CALL not yet implented
         // const expectedActions = [
         //   {type: types.BEGIN_API_CALL},
         //   {type: types.LOAD_GOALS_SUCCESS, goals}
         // ];
         const expectedActions = [
-          { type: types.DELETE_GOAL_SUCCCESS, goalId: goalToDelete.id }
+          { type: types.DELETE_GOAL_SUCCCESS, goalId: goalToDelete._id }
         ];
         const store = mockStore({ goals: [goalToDelete] });
-        return store.dispatch(actions.deleteGoal(goalToDelete.id)).then(() => {
+        return store.dispatch(actions.deleteGoal(goalToDelete._id)).then(() => {
           expect(store.getActions()).toEqual(expectedActions);
         });
       });
