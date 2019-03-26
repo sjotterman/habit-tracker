@@ -63,8 +63,8 @@ describe("time formatter", () => {
   });
 
   it("should calculate diff in days", () => {
-    const dayOne = new Date("2019-01-01");
-    const dayTwo = new Date("2019-01-02");
+    const dayOne = new Date("2019-01-01T12:00:00Z");
+    const dayTwo = new Date("2019-01-02T12:00:00Z");
     expect(timeFormatter.dateDiffInDays(dayOne, dayTwo)).toEqual(1);
   });
 
@@ -72,5 +72,25 @@ describe("time formatter", () => {
     const date = new Date("2019-01-01 04:00:00");
     const formatttedDate = timeFormatter.formatDateShort(date);
     expect(formatttedDate).toEqual("2019-01-01");
+  });
+
+  it("should confirm a goal was already done on that day", () => {
+    const date = "2019-02-02T12:00:00Z";
+    const datesDone = [
+      "2019-01-01T11:30:00Z",
+      "2019-01-03T11:30:00Z",
+      "2019-02-02T11:30:00Z"
+    ];
+    expect(timeFormatter.alreadyDone(datesDone, date)).toEqual(true);
+  });
+
+  it("should confirm a goal was not already done on that day", () => {
+    const date = "2019-02-02T12:00:00Z";
+    const datesDone = [
+      "2019-01-01T11:30:00Z",
+      "2019-01-03T11:30:00Z",
+      "2019-01-05T11:30:00Z"
+    ];
+    expect(timeFormatter.alreadyDone(datesDone, date)).toEqual(false);
   });
 });

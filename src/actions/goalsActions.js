@@ -1,5 +1,5 @@
 import * as types from "./actionTypes";
-import { currentDateTime } from "../utils/timeFormatter";
+import { currentDateTime, alreadyDone } from "../utils/timeFormatter";
 import {
   getAllGoals,
   saveNewGoal,
@@ -30,15 +30,6 @@ export function deleteGoal(goalId) {
 export function deleteGoalSuccess(goalId) {
   return { type: types.DELETE_GOAL_SUCCCESS, goalId };
 }
-
-/*
-export function toggleGoal(goalId, date) {
-  const currentDate = currentDateTime();
-
-  date = date || currentDate;
-  return { type: types.GOAL_TOGGLED, goalId, date };
-}
-*/
 
 export function loadGoalsSuccess(goals) {
   return { type: types.LOAD_GOALS_SUCCESS, goals };
@@ -87,7 +78,7 @@ export function toggleGoal(goal, date) {
   const currentDate = currentDateTime();
   date = date || currentDate;
   let newGoal;
-  if (goal.dates_done.includes(date)) {
+  if (alreadyDone(goal.dates_done, date)) {
     newGoal = markGoalIncomplete(goal, date);
   } else {
     newGoal = markGoalComplete(goal, date);

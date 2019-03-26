@@ -24,7 +24,7 @@
     "test": "react-scripts test",
     "generate-mock-data": "babel-node buildScripts/generateMockData",
     "prestart-mockapi": "npm run generate-mock-data",
-    "start-mockapi": "json-server --watch src/api/db.json --port 3001",
+    "start-mockapi": "json-server --id _id --watch src/api/db.json --port 3001",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

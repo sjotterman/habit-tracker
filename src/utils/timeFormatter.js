@@ -22,6 +22,17 @@ export const formatDateShort = date => {
   return currentDateTime;
 };
 
+export const alreadyDone = (datesDone, date) => {
+  const dayToCheck = formatDateShort(new Date(date));
+  for (const dateDone of datesDone) {
+    const dayDone = formatDateShort(new Date(dateDone));
+    if (dayDone === dayToCheck) {
+      return true;
+    }
+  }
+  return false;
+};
+
 export const calculateBestStreak = dates_done => {
   let bestStreak = 0;
   let currentStreak = 0;
