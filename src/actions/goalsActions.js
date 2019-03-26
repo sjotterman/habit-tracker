@@ -1,5 +1,9 @@
 import * as types from "./actionTypes";
-import { currentDateTime, alreadyDone } from "../utils/timeFormatter";
+import {
+  currentDateTime,
+  alreadyDone,
+  isSameDay
+} from "../utils/timeFormatter";
 import {
   getAllGoals,
   saveNewGoal,
@@ -106,7 +110,7 @@ export function markGoalComplete(goal, date) {
 export function markGoalIncomplete(goal, date) {
   let dates_done = [...goal.dates_done];
   dates_done = dates_done.filter(item => {
-    return item !== date;
+    return !isSameDay(item, date);
   });
   return { ...goal, dates_done };
 }

@@ -1,8 +1,9 @@
+import moment from "moment";
+
 const _MS_PER_DAY = 1000 * 60 * 60 * 24;
 
 export const currentDateTime = () => {
-  var today = new Date();
-  const currentDateTime = formatDateShort(today);
+  const currentDateTime = formatDateLong();
   return currentDateTime;
 };
 
@@ -20,6 +21,10 @@ export const formatDateShort = date => {
   }
   const currentDateTime = `${yyyy}-${mm}-${dd}`;
   return currentDateTime;
+};
+
+export const formatDateLong = date => {
+  return moment(date).format("YYYY-MM-DDTHH:mm:ssZ");
 };
 
 export const alreadyDone = (datesDone, date) => {
@@ -98,4 +103,8 @@ export const dateDiffInDays = (dayOne, dayTwo) => {
   );
 
   return Math.floor((utc2 - utc1) / _MS_PER_DAY);
+};
+
+export const isSameDay = (dayOne, dayTwo) => {
+  return dateDiffInDays(new Date(dayOne), new Date(dayTwo)) === 0;
 };

@@ -74,6 +74,12 @@ describe("time formatter", () => {
     expect(formatttedDate).toEqual("2019-01-01");
   });
 
+  it("should format the long date properly from a string", () => {
+    const date = "2019-01-01 04:00:00";
+    const formatttedDate = timeFormatter.formatDateLong(date);
+    expect(formatttedDate).toEqual("2019-01-01T04:00:00-05:00");
+  });
+
   it("should confirm a goal was already done on that day", () => {
     const date = "2019-02-02T12:00:00Z";
     const datesDone = [
@@ -92,5 +98,17 @@ describe("time formatter", () => {
       "2019-01-05T11:30:00Z"
     ];
     expect(timeFormatter.alreadyDone(datesDone, date)).toEqual(false);
+  });
+
+  it("should confirm two times are on the same day", () => {
+    const date1 = "2019-02-02T12:00:00Z";
+    const date2 = "2019-02-02T11:00:00Z";
+    expect(timeFormatter.isSameDay(date1, date2)).toEqual(true);
+  });
+
+  it("should confirm two times are not on the same day", () => {
+    const date1 = "2019-01-01T12:00:00Z";
+    const date2 = "2019-02-02T11:00:00Z";
+    expect(timeFormatter.isSameDay(date1, date2)).toEqual(false);
   });
 });

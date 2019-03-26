@@ -27,10 +27,11 @@ describe("Goals Actions", () => {
     });
 
     it("Should toggle a complete goal to be incomplete", () => {
-      const goalDoneDate = "2019-03-03";
+      const goalDoneDate = "2019-03-03T12:00:00";
+      const alreadyDoneDate = "2019-03-03T11:00:00";
       const beforeGoal = {
         _id: "goalId",
-        dates_done: [goalDoneDate, "2019-04-04"]
+        dates_done: [alreadyDoneDate, "2019-04-04"]
       };
       const afterGoal = {
         _id: "goalId",
@@ -160,7 +161,7 @@ describe("Goals Actions", () => {
         const goal = {
           name: "Existing Goal",
           done: false,
-          _id: "existing-goal-id"
+          id: "existing-goal-id"
         };
         fetchMock.putOnce(`http://localhost:3001/goals/${goal._id}`, {
           body: goal,
