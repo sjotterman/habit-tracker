@@ -3,7 +3,9 @@ import {
   calculateCurrentStreak,
   calculateBestStreak,
   currentDateTime,
-  prettyDisplayTime
+  prettyDisplayTime,
+  dateDiffInDays,
+  isSameDay
 } from "../../utils/timeFormatter";
 
 const GoalRow = props => {
@@ -13,8 +15,10 @@ const GoalRow = props => {
   const today = currentDateTime();
   if (goal.dates_done.length > 0) {
     const mostRecentDoneTime = goal.dates_done[goal.dates_done.length - 1];
+    console.log(mostRecentDoneTime);
+    console.log(today);
     mostRecentDone = prettyDisplayTime(mostRecentDoneTime);
-    if (today === mostRecentDone) {
+    if (isSameDay(today, mostRecentDoneTime)) {
       doneToday = true;
     }
   }
