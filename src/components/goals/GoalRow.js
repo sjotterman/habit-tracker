@@ -2,7 +2,8 @@ import React from "react";
 import {
   calculateCurrentStreak,
   calculateBestStreak,
-  currentDateTime
+  currentDateTime,
+  prettyDisplayTime
 } from "../../utils/timeFormatter";
 
 const GoalRow = props => {
@@ -11,7 +12,8 @@ const GoalRow = props => {
   let doneToday = false;
   const today = currentDateTime();
   if (goal.dates_done.length > 0) {
-    mostRecentDone = goal.dates_done[goal.dates_done.length - 1];
+    const mostRecentDoneTime = goal.dates_done[goal.dates_done.length - 1];
+    mostRecentDone = prettyDisplayTime(mostRecentDoneTime);
     if (today === mostRecentDone) {
       doneToday = true;
     }

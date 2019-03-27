@@ -38,6 +38,10 @@ export const alreadyDone = (datesDone, date) => {
   return false;
 };
 
+export const prettyDisplayTime = timeString => {
+  return moment(timeString).fromNow();
+};
+
 export const calculateBestStreak = dates_done => {
   const shortDatesDone = dates_done.map(item => {
     return moment(item).format("Y-MM-DD");
