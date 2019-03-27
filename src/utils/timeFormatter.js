@@ -39,10 +39,13 @@ export const alreadyDone = (datesDone, date) => {
 };
 
 export const calculateBestStreak = dates_done => {
+  const shortDatesDone = dates_done.map(item => {
+    return moment(item).format("Y-MM-DD");
+  });
   let bestStreak = 0;
   let currentStreak = 0;
   let prevDay = null;
-  for (const date of dates_done) {
+  for (const date of shortDatesDone) {
     let currentDayTime = timeFromDate(date);
     let prevDayTime = timeFromDate(prevDay);
     if (dateDiffInDays(prevDayTime, currentDayTime) > 1) {
@@ -60,11 +63,18 @@ export const calculateBestStreak = dates_done => {
 };
 
 export const calculateCurrentStreak = (dates_done, today) => {
-  let reversedArray = [...dates_done].reverse();
-  let prevDay = today;
+  const shortDatesDone = dates_done.map(item => {
+    return moment(item).format("Y-MM-DD");
+  });
+  const shortDay = moment(today).format("Y-MM-DD");
+
+  const filteredShortDates = [...new Set(shortDatesDone)];
+
+  let reversedArray = [...filteredShortDates].reverse();
+  let prevDay = shortDay;
   let streakArray = [];
   let keepCounting = true;
-  let todayDate = timeFromDate(today);
+  let todayDate = timeFromDate(shortDay);
   let mostRecentDate = timeFromDate(reversedArray[0]);
   if (dateDiffInDays(mostRecentDate, todayDate) > 1) {
     return 0;

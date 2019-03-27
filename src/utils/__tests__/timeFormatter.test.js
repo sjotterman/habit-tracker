@@ -2,50 +2,65 @@ import * as timeFormatter from "../timeFormatter";
 
 describe("time formatter", () => {
   it("should calculate the best streak", () => {
-    const dates_done = ["2019-02-01", "2019-02-02", "2019-02-03", "2019-02-15"];
+    const dates_done = [
+      "2019-02-01T12:00:00-04:00",
+      "2019-02-02T12:00:00-04:00",
+      "2019-02-03T12:00:00-04:00",
+      "2019-02-15T12:00:00-04:00"
+    ];
     expect(timeFormatter.calculateBestStreak(dates_done)).toEqual(3);
   });
 
   it("should calculate the current streak with one day done", () => {
-    const dates_done = ["2019-02-15"];
-    const today = "2019-02-15";
+    const dates_done = ["2019-02-15T12:00:00-04:00"];
+    const today = "2019-02-15T12:00:00-04:00";
     expect(timeFormatter.calculateCurrentStreak(dates_done, today)).toEqual(1);
   });
 
   it("should calculate the current streak with one previous day done", () => {
-    const dates_done = ["2019-02-14"];
-    const today = "2019-02-15";
+    const dates_done = ["2019-02-14T12:00:00-04:00"];
+    const today = "2019-02-15T12:00:00-04:00";
     expect(timeFormatter.calculateCurrentStreak(dates_done, today)).toEqual(1);
   });
 
   it("should calculate the current streak with two days done", () => {
-    const dates_done = ["2019-02-14", "2019-02-15"];
-    const today = "2019-02-15";
+    const dates_done = [
+      "2019-02-14T12:00:00-04:00",
+      "2019-02-15T12:00:00-04:00"
+    ];
+    const today = "2019-02-15T12:00:00-04:00";
     expect(timeFormatter.calculateCurrentStreak(dates_done, today)).toEqual(2);
   });
 
   it("should calculate the current streak with no days done", () => {
-    const dates_done = ["2019-02-10", "2019-02-11"];
-    const today = "2019-02-15";
+    const dates_done = [
+      "2019-02-10T12:00:00-04:00",
+      "2019-02-11T12:00:00-04:00"
+    ];
+    const today = "2019-02-15T12:00:00-04:00";
     expect(timeFormatter.calculateCurrentStreak(dates_done, today)).toEqual(0);
   });
 
   it("should calculate the current streak with a broken streak", () => {
-    const dates_done = ["2019-02-11", "2019-02-14", "2019-02-15"];
-    const today = "2019-02-15";
+    const dates_done = [
+      "2019-02-11T12:00:00-04:00",
+      "2019-02-14T12:00:00-04:00",
+      "2019-02-15T12:00:00-04:00"
+    ];
+    const today = "2019-02-15T12:00:00-04:00";
     expect(timeFormatter.calculateCurrentStreak(dates_done, today)).toEqual(2);
   });
 
   it("should calculate another best streak", () => {
     const dates_done = [
-      "2019-02-01",
-      "2019-02-02",
-      "2019-02-28",
-      "2019-03-01",
-      "2019-03-02",
-      "2019-03-03",
-      "2019-03-04",
-      "2019-03-05"
+      "2019-02-01T12:00:00-04:00",
+      "2019-02-02T12:00:00-04:00",
+      "2019-02-28T12:00:00-04:00",
+      "2019-03-01T12:00:00-04:00",
+      "2019-03-02T12:00:00-04:00",
+      "2019-03-03T12:00:00-04:00",
+      "2019-03-04T12:00:00-04:00",
+      "2019-03-05T12:00:00-04:00"
     ];
     expect(timeFormatter.calculateBestStreak(dates_done)).toEqual(6);
   });
