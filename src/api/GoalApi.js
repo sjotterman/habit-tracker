@@ -1,4 +1,3 @@
-// import delay from "./delay";
 import getBaseUrl from "./baseUrl";
 
 const baseUrl = getBaseUrl();
