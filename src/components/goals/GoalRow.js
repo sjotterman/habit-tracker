@@ -6,6 +6,7 @@ import {
   prettyDisplayTime,
   isSameDay
 } from "../../utils/timeFormatter";
+import GoalStatusBadge from "./GoalStatusBadge";
 
 const GoalRow = props => {
   const { goal } = props;
@@ -24,9 +25,9 @@ const GoalRow = props => {
       <td>
         <div
           className={
-            "btn btn-goal-big " + (doneToday ? "btn-goal-done" : "btn-goal")
+            "btn btn-goal-big " +
+            (doneToday ? "btn-goal-done" : "btn-secondary")
           }
-          onClick={props.onGoalToggle}
         >
           {goal.name}
         </div>
@@ -35,8 +36,8 @@ const GoalRow = props => {
       <td className="text-light h3">
         {calculateCurrentStreak(goal.dates_done, today)}
       </td>
-      <td className="text-light">
-        <p className="font-weight-bold">{doneToday ? "Yes!" : "Not yet!"}</p>
+      <td className="text-light" onClick={props.onGoalToggle}>
+        <GoalStatusBadge done={doneToday} />
         <p>Most recently done: {mostRecentDone}</p>
       </td>
     </tr>
