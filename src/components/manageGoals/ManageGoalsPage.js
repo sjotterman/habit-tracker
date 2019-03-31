@@ -9,7 +9,8 @@ class ManageGoalsPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      fieldValue: ""
+      fieldValue: "",
+      saving: false
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -21,8 +22,10 @@ class ManageGoalsPage extends React.Component {
   }
 
   handleSubmit(event) {
+    this.setState({ saving: true, fieldValue: "" });
     this.props.actions.createGoal({ name: this.state.fieldValue }).then(() => {
       toast.success("Goal created!");
+      this.setState({ saving: false });
     });
     event.preventDefault();
   }
@@ -45,6 +48,7 @@ class ManageGoalsPage extends React.Component {
           handleChange={this.handleChange}
           fieldValue={this.state.fieldValue}
           handleSubmit={this.handleSubmit}
+          saving={this.state.saving}
         />
       </div>
     );

@@ -2,7 +2,14 @@ import React from "react";
 import ManageGoalRow from "./ManageGoalRow";
 
 const GoalList = props => {
-  let { goals, onGoalDelete, handleChange, fieldValue, handleSubmit } = props;
+  let {
+    goals,
+    onGoalDelete,
+    handleChange,
+    fieldValue,
+    handleSubmit,
+    saving
+  } = props;
   return (
     <div className="text-light">
       <table className="table">
@@ -36,8 +43,12 @@ const GoalList = props => {
               </div>
             </td>
             <td>
-              <div className="btn btn-primary" onClick={handleSubmit}>
-                Add
+              <div
+                className="btn btn-primary"
+                disabled={saving}
+                onClick={handleSubmit}
+              >
+                {saving ? "Saving..." : "Add"}
               </div>
             </td>
           </tr>
