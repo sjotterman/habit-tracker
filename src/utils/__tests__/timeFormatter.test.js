@@ -1,4 +1,5 @@
 import * as timeFormatter from "../timeFormatter";
+import moment from "moment";
 
 describe("time formatter", () => {
   it("should calculate the best streak", () => {
@@ -87,12 +88,6 @@ describe("time formatter", () => {
     const date = new Date("2019-01-01 04:00:00");
     const formatttedDate = timeFormatter.formatDateShort(date);
     expect(formatttedDate).toEqual("2019-01-01");
-  });
-
-  it("should format the long date properly from a string", () => {
-    const date = "2019-01-01 04:00:00";
-    const formatttedDate = timeFormatter.formatDateLong(date);
-    expect(formatttedDate).toEqual("2019-01-01T04:00:00-05:00");
   });
 
   it("should confirm a goal was already done on that day", () => {
