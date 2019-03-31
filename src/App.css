@@ -47,24 +47,28 @@ body {
   border-color: #0062cc;
 }
 
-.btn-goal:focus, .btn-goal.focus {
+.btn-goal:focus,
+.btn-goal.focus {
   box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
 }
 
-.btn-goal.disabled, .btn-goal:disabled {
+.btn-goal.disabled,
+.btn-goal:disabled {
   color: #fff;
   background-color: #90b4ba;
   border-color: #99b9ba;
 }
 
-.btn-goal:not(:disabled):not(.disabled):active, .btn-goal:not(:disabled):not(.disabled).active,
+.btn-goal:not(:disabled):not(.disabled):active,
+.btn-goal:not(:disabled):not(.disabled).active,
 .show > .btn-goal.dropdown-toggle {
   color: #fff;
   background-color: #90b4ba;
   border-color: #99b9ba;
 }
 
-.btn-goal:not(:disabled):not(.disabled):active:focus, .btn-goal:not(:disabled):not(.disabled).active:focus,
+.btn-goal:not(:disabled):not(.disabled):active:focus,
+.btn-goal:not(:disabled):not(.disabled).active:focus,
 .show > .btn-goal.dropdown-toggle:focus {
   box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
 }
@@ -73,6 +77,10 @@ body {
   color: #fff;
   background-color: #00b4ba;
   border-color: #99b9ba;
+}
+
+.goal-card a {
+  color: inherit;
 }
 
 @keyframes App-logo-spin {

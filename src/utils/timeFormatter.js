@@ -122,3 +122,35 @@ export const dateDiffInDays = (dayOne, dayTwo) => {
 export const isSameDay = (dayOne, dayTwo) => {
   return dateDiffInDays(new Date(dayOne), new Date(dayTwo)) === 0;
 };
+
+export const statusByDate = (
+  datesDone,
+  start,
+  end = moment().format("YYYY-MM-DD")
+) => {
+  const firstDate = moment(start);
+  const endDay = moment(end)
+    .add(1, "days")
+    .format("YYYY-MM-DD");
+  const daysDone = datesDone.map(item => {
+    return moment(item).format("YYYY-MM-DD");
+  });
+  let allDates = [];
+  let currentDate = firstDate;
+  while (currentDate.format("YYYY-MM-DD") !== endDay) {
+    const day = currentDate.format("YYYY-MM-DD");
+    const dateStatus = { day, done: false };
+    if (daysDone.includes(day)) {
+      dateStatus.done = true;
+    }
+
+    allDates.push(dateStatus);
+    currentDate = currentDate.add(1, "days");
+    console.log(currentDate.format("YYYY-MM-DD"));
+  }
+
+  const dateStatus = datesDone.map(doneTime => {
+    return { day: doneTime, done: true };
+  });
+  return allDates;
+};

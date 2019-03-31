@@ -121,4 +121,23 @@ describe("time formatter", () => {
     const date2 = "2019-02-02T11:00:00Z";
     expect(timeFormatter.isSameDay(date1, date2)).toEqual(false);
   });
+
+  it("should list status by date", () => {
+    const datesDone = [
+      "2019-01-01T11:30:00Z",
+      "2019-01-02T11:30:00Z",
+      "2019-01-04T11:30:00Z"
+    ];
+    const expectedStatusByDate = [
+      { day: "2019-01-01", done: true },
+      { day: "2019-01-02", done: true },
+      { day: "2019-01-03", done: false },
+      { day: "2019-01-04", done: true }
+    ];
+    const startDay = "2019-01-01";
+    const endDay = "2019-01-04";
+    expect(timeFormatter.statusByDate(datesDone, startDay, endDay)).toEqual(
+      expectedStatusByDate
+    );
+  });
 });

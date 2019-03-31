@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {
   calculateCurrentStreak,
   calculateBestStreak,
@@ -25,11 +26,11 @@ const GoalRow = props => {
       <td>
         <div
           className={
-            "btn btn-goal-big " +
+            "goal-card btn btn-goal-big " +
             (doneToday ? "btn-goal-done" : "btn-secondary")
           }
         >
-          {goal.name}
+          <Link to={`/goals/${goal._id}`}>{goal.name}</Link>
         </div>
       </td>
       <td className="text-light h3">{calculateBestStreak(goal.dates_done)}</td>

@@ -8,6 +8,7 @@ import GoalsPage from "./components/goals/GoalsPage";
 import ManageGoalsPage from "./components/manageGoals/ManageGoalsPage";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import GoalDetail from "./components/goals/GoalDetail";
 
 class App extends Component {
   render() {
@@ -20,7 +21,8 @@ class App extends Component {
               <Route exact path="/" component={HomePage} />
               <Route path="/about" component={AboutPage} />
               <Route path="/manageGoals" component={ManageGoalsPage} />
-              <Route path="/goals" component={GoalsPage} />
+              <Route path="/goals/:goalId" component={GoalDetail} />
+              <Route exact path="/goals" component={GoalsPage} />
             </div>
           </div>
           <ToastContainer autoClose={3000} hideProgressBar />
