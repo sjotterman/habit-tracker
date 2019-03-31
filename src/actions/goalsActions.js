@@ -24,7 +24,7 @@ export function deleteGoal(goalId) {
   return function(dispatch) {
     dispatch(beginApiCall());
     return deleteGoalById(goalId)
-      .then(goals => {
+      .then(() => {
         dispatch(deleteGoalSuccess(goalId));
       })
       .catch(error => {

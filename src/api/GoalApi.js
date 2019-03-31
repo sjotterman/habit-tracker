@@ -47,7 +47,7 @@ export function deleteGoalById(id) {
 function del(url) {
   return fetch(baseUrl + url, {
     method: "delete"
-  }).then(onSuccess, onError);
+  }).then(() => true, onError);
 }
 
 function onSuccess(response) {
