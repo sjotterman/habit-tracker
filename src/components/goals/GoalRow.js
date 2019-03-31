@@ -24,7 +24,7 @@ const GoalRow = props => {
       <td>
         <div
           className={
-            "btn btn-goal-big " + (goal.done ? "btn-goal-done" : "btn-goal")
+            "btn btn-goal-big " + (doneToday ? "btn-goal-done" : "btn-goal")
           }
           onClick={props.onGoalToggle}
         >
