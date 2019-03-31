@@ -50,7 +50,7 @@ class ManageGoalsPage extends React.Component {
     return (
       <div>
         <h1 className="text-light">Manage Goals</h1>
-        {this.props.loading ? (
+        {this.props.loading && !this.state.saving ? (
           <Spinner />
         ) : (
           <ManageGoalList
