@@ -101,6 +101,7 @@ export function toggleGoal(goal, date) {
     return modifyGoal(newGoal)
       .then(savedGoal => {
         dispatch(updateGoalSuccess(savedGoal));
+        return savedGoal;
       })
       .catch(error => {
         dispatch(apiCallError(error));
