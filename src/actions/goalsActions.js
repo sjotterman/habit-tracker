@@ -10,7 +10,7 @@ import {
   deleteGoalById,
   modifyGoal
 } from "../api/GoalApi";
-import { beginApiCall } from "./apiStatusActions";
+import { beginApiCall, apiCallError } from "./apiStatusActions";
 
 export function createGoalSuccess(goal) {
   return { type: types.CREATE_GOAL_SUCCESS, goal };
@@ -28,6 +28,7 @@ export function deleteGoal(goalId) {
         dispatch(deleteGoalSuccess(goalId));
       })
       .catch(error => {
+        dispatch(apiCallError(error));
         throw error;
       });
   };
@@ -49,6 +50,7 @@ export function loadGoals() {
         dispatch(loadGoalsSuccess(goals));
       })
       .catch(error => {
+        dispatch(apiCallError(error));
         throw error;
       });
   };
@@ -65,6 +67,7 @@ export function createGoal(goal) {
         dispatch(createGoalSuccess(savedGoal));
       })
       .catch(error => {
+        dispatch(apiCallError(error));
         throw error;
       });
   };
@@ -78,6 +81,7 @@ export function updateGoal(goal) {
         dispatch(updateGoalSuccess(savedGoal));
       })
       .catch(error => {
+        dispatch(apiCallError(error));
         throw error;
       });
   };
@@ -99,6 +103,7 @@ export function toggleGoal(goal, date) {
         dispatch(updateGoalSuccess(savedGoal));
       })
       .catch(error => {
+        dispatch(apiCallError(error));
         throw error;
       });
   };
