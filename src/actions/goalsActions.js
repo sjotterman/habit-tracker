@@ -10,6 +10,7 @@ import {
   deleteGoalById,
   modifyGoal
 } from "../api/GoalApi";
+import { beginApiCall } from "./apiStatusActions";
 
 export function createGoalSuccess(goal) {
   return { type: types.CREATE_GOAL_SUCCESS, goal };
@@ -21,6 +22,7 @@ export function updateGoalSuccess(goal) {
 
 export function deleteGoal(goalId) {
   return function(dispatch) {
+    dispatch(beginApiCall());
     return deleteGoalById(goalId)
       .then(goals => {
         dispatch(deleteGoalSuccess(goalId));
@@ -32,7 +34,7 @@ export function deleteGoal(goalId) {
 }
 
 export function deleteGoalSuccess(goalId) {
-  return { type: types.DELETE_GOAL_SUCCCESS, goalId };
+  return { type: types.DELETE_GOAL_SUCCESS, goalId };
 }
 
 export function loadGoalsSuccess(goals) {
@@ -41,6 +43,7 @@ export function loadGoalsSuccess(goals) {
 
 export function loadGoals() {
   return function(dispatch) {
+    dispatch(beginApiCall());
     return getAllGoals()
       .then(goals => {
         dispatch(loadGoalsSuccess(goals));
@@ -56,6 +59,7 @@ export function createGoal(goal) {
     goal.dates_done = [];
   }
   return function(dispatch, getState) {
+    dispatch(beginApiCall());
     return saveNewGoal(goal)
       .then(savedGoal => {
         dispatch(createGoalSuccess(savedGoal));
@@ -68,6 +72,7 @@ export function createGoal(goal) {
 
 export function updateGoal(goal) {
   return function(dispatch, getState) {
+    dispatch(beginApiCall());
     return modifyGoal(goal)
       .then(savedGoal => {
         dispatch(updateGoalSuccess(savedGoal));
@@ -88,6 +93,7 @@ export function toggleGoal(goal, date) {
     newGoal = markGoalComplete(goal, date);
   }
   return function(dispatch, getState) {
+    dispatch(beginApiCall());
     return modifyGoal(newGoal)
       .then(savedGoal => {
         dispatch(updateGoalSuccess(savedGoal));

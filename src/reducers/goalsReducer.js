@@ -1,6 +1,7 @@
 import * as types from "../actions/actionTypes";
+import initialState from "./initialState";
 
-export default function goalsReducer(state = [], action) {
+export default function goalsReducer(state = initialState.goals, action) {
   switch (action.type) {
     case types.CREATE_GOAL_SUCCESS:
       return [...state, Object.assign({}, action.goal)];
@@ -13,7 +14,7 @@ export default function goalsReducer(state = [], action) {
         return { ...goal };
       });
 
-    case types.DELETE_GOAL_SUCCCESS:
+    case types.DELETE_GOAL_SUCCESS:
       const remainingGoals = state.filter(item => {
         return item._id !== action.goalId;
       });

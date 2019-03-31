@@ -35,7 +35,7 @@ class ManageGoalsPage extends React.Component {
   }
 
   render() {
-    let { goals, actions } = this.props;
+    let { goals } = this.props;
     return (
       <div>
         <h1 className="text-light">Goals</h1>

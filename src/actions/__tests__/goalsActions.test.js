@@ -123,12 +123,10 @@ describe("Goals Actions", () => {
           body: goals,
           headers: { "content-type": "application/json" }
         });
-        // types.BEGIN_API_CALL not yet implented
-        // const expectedActions = [
-        //   {type: types.BEGIN_API_CALL},
-        //   {type: types.LOAD_GOALS_SUCCESS, goals}
-        // ];
-        const expectedActions = [{ type: types.LOAD_GOALS_SUCCESS, goals }];
+        const expectedActions = [
+          { type: types.BEGIN_API_CALL },
+          { type: types.LOAD_GOALS_SUCCESS, goals }
+        ];
         const store = mockStore({ goals: [] });
         return store.dispatch(actions.loadGoals()).then(() => {
           expect(store.getActions()).toEqual(expectedActions);
@@ -145,12 +143,10 @@ describe("Goals Actions", () => {
           body: goal,
           headers: { "content-type": "application/json" }
         });
-        // types.BEGIN_API_CALL not yet implented
-        // const expectedActions = [
-        //   {type: types.BEGIN_API_CALL},
-        //   {type: types.LOAD_GOALS_SUCCESS, goals}
-        // ];
-        const expectedActions = [{ type: types.CREATE_GOAL_SUCCESS, goal }];
+        const expectedActions = [
+          { type: types.BEGIN_API_CALL },
+          { type: types.CREATE_GOAL_SUCCESS, goal }
+        ];
         const store = mockStore({ goals: [] });
         return store.dispatch(actions.createGoal(goal)).then(() => {
           expect(store.getActions()).toEqual(expectedActions);
@@ -167,12 +163,10 @@ describe("Goals Actions", () => {
           body: goal,
           headers: { "content-type": "application/json" }
         });
-        // types.BEGIN_API_CALL not yet implented
-        // const expectedActions = [
-        //   {type: types.BEGIN_API_CALL},
-        //   {type: types.LOAD_GOALS_SUCCESS, goals}
-        // ];
-        const expectedActions = [{ type: types.UPDATE_GOAL_SUCCESS, goal }];
+        const expectedActions = [
+          { type: types.BEGIN_API_CALL },
+          { type: types.UPDATE_GOAL_SUCCESS, goal }
+        ];
         const store = mockStore({ goals: [] });
         return store.dispatch(actions.updateGoal(goal)).then(() => {
           expect(store.getActions()).toEqual(expectedActions);
@@ -199,12 +193,8 @@ describe("Goals Actions", () => {
           body: modifiedGoal,
           headers: { "content-type": "application/json" }
         });
-        // types.BEGIN_API_CALL not yet implented
-        // const expectedActions = [
-        //   {type: types.BEGIN_API_CALL},
-        //   {type: types.LOAD_GOALS_SUCCESS, goals}
-        // ];
         const expectedActions = [
+          { type: types.BEGIN_API_CALL },
           { type: types.UPDATE_GOAL_SUCCESS, goal: modifiedGoal }
         ];
         const store = mockStore({ goals: [goalToToggle] });
@@ -233,12 +223,8 @@ describe("Goals Actions", () => {
           body: modifiedGoal,
           headers: { "content-type": "application/json" }
         });
-        // types.BEGIN_API_CALL not yet implented
-        // const expectedActions = [
-        //   {type: types.BEGIN_API_CALL},
-        //   {type: types.LOAD_GOALS_SUCCESS, goals}
-        // ];
         const expectedActions = [
+          { type: types.BEGIN_API_CALL },
           { type: types.UPDATE_GOAL_SUCCESS, goal: modifiedGoal }
         ];
         const store = mockStore({ goals: [goalToToggle] });
@@ -265,12 +251,8 @@ describe("Goals Actions", () => {
           body: modifiedGoal,
           headers: { "content-type": "application/json" }
         });
-        // types.BEGIN_API_CALL not yet implented
-        // const expectedActions = [
-        //   {type: types.BEGIN_API_CALL},
-        //   {type: types.LOAD_GOALS_SUCCESS, goals}
-        // ];
         const expectedActions = [
+          { type: types.BEGIN_API_CALL },
           { type: types.UPDATE_GOAL_SUCCESS, goal: modifiedGoal }
         ];
         const store = mockStore({ goals: [goalToToggle] });
@@ -296,13 +278,9 @@ describe("Goals Actions", () => {
             headers: { "content-type": "application/json" }
           }
         );
-        // types.BEGIN_API_CALL not yet implented
-        // const expectedActions = [
-        //   {type: types.BEGIN_API_CALL},
-        //   {type: types.LOAD_GOALS_SUCCESS, goals}
-        // ];
         const expectedActions = [
-          { type: types.DELETE_GOAL_SUCCCESS, goalId: goalToDelete._id }
+          { type: types.BEGIN_API_CALL },
+          { type: types.DELETE_GOAL_SUCCESS, goalId: goalToDelete._id }
         ];
         const store = mockStore({ goals: [goalToDelete] });
         return store.dispatch(actions.deleteGoal(goalToDelete._id)).then(() => {

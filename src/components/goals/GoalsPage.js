@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as goalsActions from "../../actions/goalsActions";
 import GoalList from "./GoalList";
+import Spinner from "../shared/Spinner";
 
 class GoalsPage extends React.Component {
   render() {
@@ -10,7 +11,11 @@ class GoalsPage extends React.Component {
     return (
       <div>
         <h1 className="text-light">Goals</h1>
-        <GoalList goals={goals} onGoalToggle={actions.toggleGoal} />
+        {this.props.loading ? (
+          <Spinner />
+        ) : (
+          <GoalList goals={goals} onGoalToggle={actions.toggleGoal} />
+        )}
       </div>
     );
   }
@@ -18,7 +23,8 @@ class GoalsPage extends React.Component {
 
 function mapStateToProps(state, ownProps) {
   return {
-    goals: state.goals
+    goals: state.goals,
+    loading: state.apiCallsInProgress > 0
   };
 }
 

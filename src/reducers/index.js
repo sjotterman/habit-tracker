@@ -1,8 +1,10 @@
 import { combineReducers } from "redux";
 import goals from "./goalsReducer";
+import apiCallsInProgress from "./apiStatusReducer";
 
 const rootReducer = combineReducers({
-  goals
+  goals,
+  apiCallsInProgress
 });
 
 export default rootReducer;

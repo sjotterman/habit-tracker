@@ -4,7 +4,6 @@ import {
   calculateBestStreak,
   currentDateTime,
   prettyDisplayTime,
-  dateDiffInDays,
   isSameDay
 } from "../../utils/timeFormatter";
 

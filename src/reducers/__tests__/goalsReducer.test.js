@@ -156,7 +156,7 @@ describe("goals reducer", () => {
       }
     ];
     const action = {
-      type: types.DELETE_GOAL_SUCCCESS,
+      type: types.DELETE_GOAL_SUCCESS,
       goalId: "eat-food"
     };
     expect(goalsReducer(initialState, action)).toEqual(nextState);
