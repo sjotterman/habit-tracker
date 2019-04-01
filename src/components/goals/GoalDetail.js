@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import Spinner from "../shared/Spinner";
+import { Link } from "react-router-dom";
 import GoalDatesDone from "./GoalDatesDone";
 import * as goalsActions from "../../actions/goalsActions";
 
@@ -10,12 +11,19 @@ class GoalDetail extends React.Component {
     const { goal } = this.props;
     return (
       <div>
-        <h1 className="text-light">Goal Detail</h1>
         {this.props.loading ? (
           <Spinner />
         ) : (
           <div>
-            <div>{goal.name}</div>
+            <h3>{goal.name}</h3>
+            <div className="col-xs-2">
+              <Link to="/goals" className="nav-link">
+                <span className="badge badge-primary">
+                  Return to Goals Page
+                </span>
+              </Link>
+            </div>
+
             <GoalDatesDone datesDone={goal.dates_done} />
           </div>
         )}

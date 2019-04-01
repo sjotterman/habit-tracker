@@ -5,24 +5,24 @@ const MainMenu = () => {
   return (
     <div className="container" id="navbarSupportedContent">
       <div className="row">
-        <div className="col-xs-4">
+        <div className="col-xs-2">
           <Link to="/" className="nav-link">
-            Home Page
+            <span className="badge badge-primary">Home Page</span>
           </Link>
         </div>
-        <div className="col-xs-4">
+        <div className="col-xs-2">
           <Link to="/goals" className="nav-link">
-            Goals
+            <span className="badge badge-primary">Goals</span>
           </Link>
         </div>
-        <div className="col-xs-4">
+        <div className="col-xs-2">
           <Link to="/manageGoals" className="nav-link">
-            Manage Goals
+            <span className="badge badge-primary">Manage Goals</span>
           </Link>
         </div>
-        <div className="col-xs-4">
+        <div className="col-xs-2">
           <Link to="/about" className="nav-link">
-            About Page
+            <span className="badge badge-primary">About</span>
           </Link>
         </div>
       </div>
