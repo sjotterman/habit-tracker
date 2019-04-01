@@ -8,7 +8,7 @@ const GoalStatusBadge = props => {
     </h2>
   ) : (
     <h2>
-      <span className="badge badge-secondary">Click to mark done</span>
+      <span className="badge badge-secondary">Mark done</span>
     </h2>
   );
 };
