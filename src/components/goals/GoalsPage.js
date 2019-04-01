@@ -44,7 +44,10 @@ class GoalsPage extends React.Component {
         {this.props.loading && !this.state.saving ? (
           <Spinner />
         ) : (
-          <GoalList goals={goals} onGoalToggle={this.handleToggle} />
+          <>
+            <div>Click a goal name for more information</div>
+            <GoalList goals={goals} onGoalToggle={this.handleToggle} />
+          </>
         )}
       </div>
     );
