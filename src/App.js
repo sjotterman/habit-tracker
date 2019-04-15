@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import "./App.css";
 import HomePage from "./components/home/HomePage";
 import AboutPage from "./components/about/AboutPage";
@@ -35,7 +35,16 @@ class App extends Component {
               render={props => <Callback auth={this.auth} {...props} />}
             />
             <Route path="/about" component={AboutPage} />
-            <Route path="/profile" component={ProfilePage} />
+            <Route
+              path="/profile"
+              render={props =>
+                this.auth.isAuthenticated() ? (
+                  <ProfilePage auth={this.auth} {...props} />
+                ) : (
+                  <Redirect to="/" />
+                )
+              }
+            />
             <Route path="/manageGoals" component={ManageGoalsPage} />
             <Route path="/goals/:goalId" component={GoalDetail} />
             <Route exact path="/goals" component={GoalsPage} />

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 class HomePage extends React.Component {
   render() {
-    const { isAuthenticated, login } = this.props.auth;
+    const { isAuthenticated, login, getProfile } = this.props.auth;
     return (
       <div>
         <h1>Home Page</h1>
