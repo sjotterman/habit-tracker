@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 class HomePage extends React.Component {
   constructor(props) {
     super(props);
-    console.log(props);
     this.state = {
       profile: null,
       error: ""
@@ -15,6 +14,7 @@ class HomePage extends React.Component {
   }
 
   loadUserProfile() {
+    if (!this.props.auth.isAuthenticated()) return;
     this.props.auth.getProfile((profile, error) => {
       this.setState({ profile, error });
     });

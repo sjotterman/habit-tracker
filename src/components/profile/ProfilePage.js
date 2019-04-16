@@ -3,7 +3,6 @@ import React from "react";
 class ProfilePage extends React.Component {
   constructor(props) {
     super(props);
-    console.log(props);
     this.state = {
       profile: null,
       error: ""
