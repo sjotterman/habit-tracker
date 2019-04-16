@@ -1,5 +1,4 @@
 import auth0 from "auth0-js";
-import { access } from "fs";
 
 export default class Auth {
   constructor(history) {
