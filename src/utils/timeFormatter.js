@@ -149,8 +149,5 @@ export const statusByDate = (
     console.log(currentDate.format("YYYY-MM-DD"));
   }
 
-  const dateStatus = datesDone.map(doneTime => {
-    return { day: doneTime, done: true };
-  });
   return allDates;
 };
