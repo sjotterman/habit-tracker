@@ -61,4 +61,14 @@ export default class Auth {
       cb(profile, err);
     });
   };
+
+  logout = () => {
+    localStorage.removeItem("access_token");
+    localStorage.removeItem("id_token");
+    localStorage.removeItem("expires_at");
+    this.auth0.logout({
+      clientID: process.env.REACT_APP_AUTH0_CLIENT_ID,
+      returnTo: process.env.REACT_APP_AUTH0_LOGOUT_URL
+    });
+  };
 }
