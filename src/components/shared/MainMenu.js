@@ -5,35 +5,35 @@ const MainMenu = props => {
   const { isAuthenticated, login, logout } = props.auth;
   return (
     <div className="container" id="navbarSupportedContent">
-      <div className="row">
-        <div className="col-xs-2">
-          <Link to="/" className="nav-link">
-            <span className="badge badge-primary">Home Page</span>
+      <div className="navbar-row">
+        <div className="navbar-item">
+          <Link to="/" className="">
+            <button className="btn btn-primary btn-sm">Home</button>
           </Link>
         </div>
-        <div className="col-xs-2">
-          <Link to="/goals" className="nav-link">
-            <span className="badge badge-primary">Goals</span>
+        <div className="navbar-item">
+          <Link to="/goals" className="">
+            <button className="btn btn-primary btn-sm">Goals</button>
           </Link>
         </div>
-        <div className="col-xs-2">
-          <Link to="/manageGoals" className="nav-link">
-            <span className="badge badge-primary">Manage Goals</span>
+        <div className="navbar-item">
+          <Link to="/manageGoals" className="">
+            <button className="btn btn-primary btn-sm">Manage</button>
           </Link>
         </div>
-        <div className="col-xs-2">
-          <Link to="/about" className="nav-link">
-            <span className="badge badge-primary">About</span>
+        <div className="navbar-item">
+          <Link to="/about" className="">
+            <button className="btn btn-primary btn-sm">About</button>
           </Link>
         </div>
         {isAuthenticated() ? (
           <>
-            <div className="col-xs-2">
-              <Link to="/profile" className="nav-link">
-                <span className="badge badge-primary">Profile</span>
+            <div className="navbar-item">
+              <Link to="/profile" className="">
+                <button className="btn btn-primary btn-sm">Profile</button>
               </Link>
             </div>
-            <div className="col-xs-2">
+            <div className="navbar-item">
               <button className="btn btn-success btn-sm" onClick={logout}>
                 Log Out
               </button>
@@ -41,7 +41,7 @@ const MainMenu = props => {
           </>
         ) : (
           <>
-            <div>
+            <div className="navbar-item">
               <button className="btn btn-success btn-sm" onClick={login}>
                 Log In
               </button>

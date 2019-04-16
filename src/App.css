@@ -91,3 +91,13 @@ body {
     transform: rotate(360deg);
   }
 }
+
+.navbar-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.navbar-item {
+  flex: 1;
+  min-height: 5rem;
+}
